@@ -18,20 +18,20 @@ body {
   color: var(--navy);
   font-family: var(--font-body), Arial, sans-serif;
 }
-button,
-input,
-textarea,
-select {
+:where(.workspace) button,
+:where(.workspace) input,
+:where(.workspace) textarea,
+:where(.workspace) select {
   font: inherit;
 }
-button,
-a,
-input,
-textarea,
-select {
+:where(.workspace) button,
+:where(.workspace) a,
+:where(.workspace) input,
+:where(.workspace) textarea,
+:where(.workspace) select {
   touch-action: manipulation;
 }
-button {
+:where(.workspace) button {
   cursor: pointer;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -43,95 +43,61 @@ button {
     background 0.15s,
     transform 0.15s;
 }
-button:hover {
+:where(.workspace) button:hover {
   background: #fff0d6;
 }
-button:disabled {
+:where(.workspace) button:disabled {
   opacity: 0.45;
   cursor: default;
 }
-a {
+:where(.workspace) a {
   color: inherit;
   text-decoration: none;
 }
-a:hover {
+:where(.workspace) a:hover {
   text-decoration: underline;
 }
-button:focus-visible,
-a:focus-visible {
+:where(.workspace) button:focus-visible,
+:where(.workspace) a:focus-visible {
   outline: 3px solid var(--coral);
   outline-offset: 3px;
 }
-input:focus,
-textarea:focus,
-select:focus {
+:where(.workspace) input:focus,
+:where(.workspace) textarea:focus,
+:where(.workspace) select:focus {
   outline: 2px solid var(--coral);
   outline-offset: 2px;
-}
-.site-header {
-  height: 92px;
-  background: var(--red);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px max(4vw, 20px);
-  gap: 24px;
-}
-.brand {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  font-size: 13px;
-  line-height: 1.5;
-}
-.brand img {
-  object-fit: contain;
-}
-.brand strong {
-  font-size: 17px;
-}
-.site-header nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  font-size: 14px;
-}
-.teacher-badge {
-  background: #ffffff1a;
-  padding: 12px 16px;
-  border-radius: 30px;
 }
 .workspace {
   width: min(1240px, 92%);
   margin: auto;
   padding: 26px 0 70px;
 }
-.breadcrumb {
+:where(.workspace) .breadcrumb {
   color: var(--muted);
   font-size: 13px;
   display: flex;
   gap: 12px;
   align-items: center;
 }
-.breadcrumb span {
+:where(.workspace) .breadcrumb span {
   color: #baa79a;
 }
-.page-heading {
+:where(.workspace) .page-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 28px 0 18px;
   gap: 16px;
 }
-.eyebrow {
+:where(.workspace) .eyebrow {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: #a45832;
   margin: 0 0 12px;
 }
-h1 {
+:where(.workspace) h1 {
   font-family: var(--font-heading), sans-serif;
   font-size: clamp(30px, 4vw, 48px);
   font-weight: 900;
@@ -139,29 +105,29 @@ h1 {
   margin: 0 0 12px;
   line-height: 1.15;
 }
-h2 {
+:where(.workspace) h2 {
   font-size: 24px;
   font-weight: 750;
   letter-spacing: -0.5px;
   margin: 0 0 9px;
 }
-h3 {
+:where(.workspace) h3 {
   font-size: 19px;
   font-weight: bold;
   margin: 25px 0 14px;
 }
-p {
+:where(.workspace) p {
   line-height: 1.6;
 }
-.page-heading p:last-child {
+:where(.workspace) .page-heading p:last-child {
   color: var(--muted);
   margin: 0;
 }
-.heading-dragon {
+:where(.workspace) .heading-dragon {
   object-fit: contain;
   margin-right: 30px;
 }
-.demo-note {
+:where(.workspace) .demo-note {
   color: #776c5c;
   font-size: 12px;
   margin: 0 0 24px;
@@ -169,55 +135,55 @@ p {
   border-left: 3px solid var(--gold);
   background: #f6ecdc;
 }
-.primary {
+:where(.workspace) .primary {
   background: var(--gold);
   color: #630c03;
   border-color: var(--gold);
   box-shadow: 0 2px 0 #c78a13;
 }
-.primary:hover {
+:where(.workspace) .primary:hover {
   background: #f4bd43;
 }
-.library-toolbar,
-.editor-toolbar {
+:where(.workspace) .library-toolbar,
+:where(.workspace) .editor-toolbar {
   display: flex;
   align-items: center;
   gap: 12px;
   justify-content: space-between;
   margin: 22px 0;
 }
-.filters {
+:where(.workspace) .filters {
   display: flex;
   background: #f0e7db;
   border-radius: 14px;
   padding: 4px;
   gap: 3px;
 }
-.filters button {
+:where(.workspace) .filters button {
   border: 0;
   background: transparent;
   font-size: 13px;
 }
-.filters .selected {
+:where(.workspace) .filters .selected {
   background: white;
   box-shadow: 0 2px 5px #01234b0a;
 }
-.search {
+:where(.workspace) .search {
   display: block;
   max-width: 360px;
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 24px;
 }
-.search input {
+:where(.workspace) .search input {
   margin-top: 8px;
 }
-.lesson-grid {
+:where(.workspace) .lesson-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
-.lesson-card {
+:where(.workspace) .lesson-card {
   background: white;
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -226,20 +192,20 @@ p {
   flex-direction: column;
   box-shadow: 0 5px 0 #eadfd23b;
 }
-.card-top {
+:where(.workspace) .card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
-.lesson-symbol {
+:where(.workspace) .lesson-symbol {
   font-size: 28px;
   background: #fff0cc;
   border-radius: 14px;
   padding: 9px 16px;
   color: #a56116;
 }
-.badge {
+:where(.workspace) .badge {
   display: inline-flex;
   background: #f5eddf;
   border-radius: 30px;
@@ -248,42 +214,42 @@ p {
   white-space: nowrap;
   align-self: start;
 }
-.published {
+:where(.workspace) .published {
   background: #e4f0e6;
   color: #376842;
 }
-.lesson-card h2 {
+:where(.workspace) .lesson-card h2 {
   font-size: 21px;
 }
-.lesson-card p {
+:where(.workspace) .lesson-card p {
   font-size: 14px;
   color: var(--muted);
 }
-.lesson-card small {
+:where(.workspace) .lesson-card small {
   font-size: 12px;
   color: #6a625a;
 }
-.class-summary {
+:where(.workspace) .class-summary {
   margin-top: auto;
   padding-top: 14px;
 }
-.lesson-card footer {
+:where(.workspace) .lesson-card footer {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid var(--border);
   padding-top: 14px;
   gap: 8px;
 }
-.lesson-card footer button {
+:where(.workspace) .lesson-card footer button {
   padding: 6px 0;
   border: 0;
   font-size: 13px;
   background: none;
 }
-.text-danger {
+:where(.workspace) .text-danger {
   color: #a52e2e !important;
 }
-.empty-state {
+:where(.workspace) .empty-state {
   grid-column: 1/-1;
   text-align: center;
   background: #fffaf3;
@@ -291,38 +257,38 @@ p {
   border-radius: 22px;
   padding: 42px 20px;
 }
-.empty-state img {
+:where(.workspace) .empty-state img {
   margin: 0 auto 15px;
   object-fit: contain;
 }
-.empty-state p {
+:where(.workspace) .empty-state p {
   color: var(--muted);
   font-size: 14px;
   margin-bottom: 24px;
 }
-.editor-toolbar {
+:where(.workspace) .editor-toolbar {
   border-top: 1px solid var(--border);
   padding-top: 20px;
   flex-wrap: wrap;
 }
-.editor-toolbar > span {
+:where(.workspace) .editor-toolbar > span {
   margin-right: auto;
   font-size: 12px;
   color: var(--muted);
 }
-.editor-toolbar button {
+:where(.workspace) .editor-toolbar button {
   font-size: 13px;
 }
-.editor-layout {
+:where(.workspace) .editor-layout {
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   gap: 28px;
   align-items: start;
 }
-.lesson-outline {
+:where(.workspace) .lesson-outline {
   padding-top: 14px;
 }
-.lesson-outline > button {
+:where(.workspace) .lesson-outline > button {
   display: flex;
   align-items: center;
   width: 100%;
@@ -334,7 +300,7 @@ p {
   text-align: left;
   padding: 15px;
 }
-.lesson-outline > button > span {
+:where(.workspace) .lesson-outline > button > span {
   border: 1px solid #d9cbbc;
   border-radius: 50%;
   width: 25px;
@@ -343,39 +309,39 @@ p {
   line-height: 24px;
   font-size: 12px;
 }
-.lesson-outline > button small {
+:where(.workspace) .lesson-outline > button small {
   margin-left: auto;
 }
-.lesson-outline > button.active {
+:where(.workspace) .lesson-outline > button.active {
   background: #f8e6c0;
   color: #713d12;
 }
-.lesson-outline > button.active > span {
+:where(.workspace) .lesson-outline > button.active > span {
   background: var(--gold);
   border-color: var(--gold);
 }
-.teacher-tip {
+:where(.workspace) .teacher-tip {
   border-top: 1px solid var(--border);
   margin: 28px 12px 0;
   padding-top: 24px;
   font-size: 13px;
 }
-.teacher-tip p {
+:where(.workspace) .teacher-tip p {
   color: var(--muted);
   font-size: 13px;
 }
-.teacher-tip > span {
+:where(.workspace) .teacher-tip > span {
   font-size: 12px;
   color: #a45832;
 }
-.editor-panel {
+:where(.workspace) .editor-panel {
   background: white;
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 32px;
   box-shadow: 0 5px 0 #eadfd23b;
 }
-.section-heading {
+:where(.workspace) .section-heading {
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -384,28 +350,28 @@ p {
   padding-bottom: 22px;
   margin-bottom: 26px;
 }
-.section-heading p:last-child {
+:where(.workspace) .section-heading p:last-child {
   color: var(--muted);
   font-size: 14px;
   margin: 0;
 }
-.form-stack {
+:where(.workspace) .form-stack {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-label {
+:where(.workspace) label {
   font-size: 14px;
   font-weight: 600;
   display: block;
 }
-label > span:not(.class-option span),
-legend > span {
+:where(.workspace) label > span:not(.class-option span),
+:where(.workspace) legend > span {
   color: var(--red);
 }
-input:not([type="checkbox"]):not([type="radio"]),
-textarea,
-select {
+:where(.workspace) input:not([type="checkbox"]):not([type="radio"]),
+:where(.workspace) textarea,
+:where(.workspace) select {
   display: block;
   width: 100%;
   padding: 13px 15px;
@@ -417,34 +383,34 @@ select {
   font-weight: 400;
   line-height: 1.5;
 }
-input::placeholder,
-textarea::placeholder {
+:where(.workspace) input::placeholder,
+:where(.workspace) textarea::placeholder {
   color: #9a9690;
 }
-textarea {
+:where(.workspace) textarea {
   resize: vertical;
 }
-fieldset {
+:where(.workspace) fieldset {
   border: 0;
   padding: 0;
   margin: 0;
   min-width: 0;
 }
-legend {
+:where(.workspace) legend {
   font-size: 14px;
   font-weight: 600;
 }
-.hint {
+:where(.workspace) .hint {
   font-size: 12px;
   color: var(--muted);
   margin: 7px 0 12px;
 }
-.class-options {
+:where(.workspace) .class-options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.class-option {
+:where(.workspace) .class-option {
   display: flex;
   align-items: start;
   gap: 10px;
@@ -453,28 +419,28 @@ legend {
   border-radius: 12px;
   cursor: pointer;
 }
-.class-option.checked {
+:where(.workspace) .class-option.checked {
   border-color: var(--coral);
   background: #fff6f0;
 }
-.class-option input {
+:where(.workspace) .class-option input {
   margin-top: 4px;
   accent-color: var(--red);
 }
-.class-option span {
+:where(.workspace) .class-option span {
   color: var(--navy) !important;
 }
-.class-option strong {
+:where(.workspace) .class-option strong {
   font-size: 12px;
 }
-.class-option small {
+:where(.workspace) .class-option small {
   display: block;
   font-size: 10px;
   font-weight: normal;
   margin-top: 4px;
   color: var(--muted);
 }
-.step-footer {
+:where(.workspace) .step-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -483,44 +449,44 @@ legend {
   margin-top: 32px;
   padding-top: 24px;
 }
-.step-footer p {
+:where(.workspace) .step-footer p {
   font-size: 11px;
   color: var(--muted);
 }
-.step-footer button {
+:where(.workspace) .step-footer button {
   font-size: 13px;
 }
-.item-card {
+:where(.workspace) .item-card {
   border: 1px solid var(--border);
   padding: 18px;
   border-radius: 14px;
   background: #fffcf7;
 }
-.item-card legend {
+:where(.workspace) .item-card legend {
   padding: 0 8px;
 }
-.row-actions {
+:where(.workspace) .row-actions {
   display: flex;
   justify-content: flex-end;
   gap: 7px;
   margin-bottom: 16px;
 }
-.row-actions button {
+:where(.workspace) .row-actions button {
   font-size: 12px;
   padding: 6px 10px;
 }
-.vocab-fields {
+:where(.workspace) .vocab-fields {
   display: grid;
   grid-template-columns: 1fr 1fr 1.3fr;
   gap: 12px;
 }
-.add-button {
+:where(.workspace) .add-button {
   border: 1.5px dashed var(--coral);
   background: #fff9f4;
   padding: 16px;
   color: #9b3a2d;
 }
-.inline-empty {
+:where(.workspace) .inline-empty {
   padding: 40px 24px;
   background: #fdf6ec;
   border-radius: 12px;
@@ -528,12 +494,12 @@ legend {
   color: var(--muted);
   font-size: 14px;
 }
-.option-grid {
+:where(.workspace) .option-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
-.error-box {
+:where(.workspace) .error-box {
   border: 1px solid #ebaaa4;
   background: #fff0ed;
   color: #9c2525;
@@ -541,11 +507,11 @@ legend {
   padding: 12px 20px;
   margin: 15px 0;
 }
-.error-box p {
+:where(.workspace) .error-box p {
   margin: 4px 0;
   font-size: 14px;
 }
-.preview-dialog {
+:where(.workspace) .preview-dialog {
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -560,7 +526,7 @@ legend {
   overflow: auto;
   color: var(--navy);
 }
-.preview-content {
+:where(.workspace) .preview-content {
   position: relative;
   max-width: 760px;
   margin: 0 auto;
@@ -568,21 +534,21 @@ legend {
   border-radius: 24px;
   padding: 40px;
 }
-.close-preview {
+:where(.workspace) .close-preview {
   position: absolute;
   right: 20px;
   top: 20px;
 }
-.preview-content > h2 {
+:where(.workspace) .preview-content > h2 {
   font-size: 32px;
   padding-right: 30px;
 }
-.preview-words {
+:where(.workspace) .preview-words {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
 }
-.preview-words > div {
+:where(.workspace) .preview-words > div {
   background: white;
   border: 1px solid var(--border);
   padding: 18px;
@@ -590,159 +556,144 @@ legend {
   border-radius: 14px;
   min-width: 120px;
 }
-.preview-words strong {
+:where(.workspace) .preview-words strong {
   display: block;
   font-size: 26px;
 }
-.preview-words span {
+:where(.workspace) .preview-words span {
   font-size: 13px;
   color: #a45832;
 }
-.preview-words p {
+:where(.workspace) .preview-words p {
   margin: 6px 0;
   font-size: 14px;
 }
-.preview-question {
+:where(.workspace) .preview-question {
   padding: 18px;
   background: white;
   border-radius: 14px;
   margin-bottom: 14px;
 }
-.preview-option {
+:where(.workspace) .preview-option {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 8px;
 }
-.preserve-lines {
+:where(.workspace) .preserve-lines {
   white-space: pre-wrap;
 }
 @media (max-width: 900px) {
-  .lesson-grid {
+  :where(.workspace) .lesson-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .editor-layout {
+  :where(.workspace) .editor-layout {
     grid-template-columns: 1fr;
   }
-  .lesson-outline {
+  :where(.workspace) .lesson-outline {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     padding: 0;
   }
-  .lesson-outline > .eyebrow,
-  .teacher-tip {
+  :where(.workspace) .lesson-outline > .eyebrow,
+  :where(.workspace) .teacher-tip {
     display: none;
   }
-  .lesson-outline > button {
+  :where(.workspace) .lesson-outline > button {
     width: auto;
     flex: 1;
     margin: 0;
     padding: 12px;
   }
-  .class-options {
+  :where(.workspace) .class-options {
     grid-template-columns: 1fr;
   }
-  .heading-dragon {
+  :where(.workspace) .heading-dragon {
     margin: 0;
     width: 90px;
     height: 106px;
   }
-  .site-header nav {
-    gap: 16px;
-  }
-  .teacher-badge {
-    display: none;
-  }
 }
 @media (max-width: 600px) {
-  .site-header {
-    height: 78px;
-  }
-  .brand span {
-    display: none;
-  }
-  .site-header nav {
-    font-size: 13px;
-  }
   .workspace {
     width: 92%;
     padding-top: 20px;
   }
-  .page-heading {
+  :where(.workspace) .page-heading {
     padding-top: 24px;
   }
-  .eyebrow {
+  :where(.workspace) .eyebrow {
     font-size: 9px;
     letter-spacing: 1px;
   }
-  h1 {
+  :where(.workspace) h1 {
     letter-spacing: -1px;
   }
-  .page-heading p:last-child {
+  :where(.workspace) .page-heading p:last-child {
     font-size: 13px;
   }
-  .heading-dragon {
+  :where(.workspace) .heading-dragon {
     width: 75px;
     height: 88px;
   }
-  .library-toolbar {
+  :where(.workspace) .library-toolbar {
     align-items: stretch;
     flex-direction: column;
   }
-  .filters {
+  :where(.workspace) .filters {
     justify-content: center;
   }
-  .lesson-grid {
+  :where(.workspace) .lesson-grid {
     grid-template-columns: 1fr;
   }
-  .editor-panel {
+  :where(.workspace) .editor-panel {
     padding: 20px 16px;
   }
-  .editor-toolbar > span {
+  :where(.workspace) .editor-toolbar > span {
     width: 50%;
     margin: 0;
   }
-  .editor-toolbar button {
+  :where(.workspace) .editor-toolbar button {
     padding: 9px 11px;
     font-size: 12px;
   }
-  .lesson-outline > button {
+  :where(.workspace) .lesson-outline > button {
     font-size: 11px;
     gap: 5px;
     padding: 10px 5px;
   }
-  .lesson-outline > button small {
+  :where(.workspace) .lesson-outline > button small {
     display: none;
   }
-  .vocab-fields,
-  .option-grid {
+  :where(.workspace) .vocab-fields,
+  :where(.workspace) .option-grid {
     grid-template-columns: 1fr;
   }
-  .step-footer {
+  :where(.workspace) .step-footer {
     flex-direction: column;
     align-items: stretch;
   }
-  .step-footer p {
+  :where(.workspace) .step-footer p {
     margin: 0;
   }
-  .preview-dialog {
+  :where(.workspace) .preview-dialog {
     padding: 12px;
   }
-  .preview-content {
+  :where(.workspace) .preview-content {
     padding: 28px 20px;
   }
-  .section-heading h2 {
+  :where(.workspace) .section-heading h2 {
     font-size: 22px;
   }
 }
 
-.display-actions {
+:where(.workspace) .display-actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
-.display-options {
+:where(.workspace) .display-options {
   display: flex;
   gap: 18px;
   align-items: end;
@@ -752,28 +703,28 @@ legend {
   padding: 20px;
   margin: 0 0 22px;
 }
-.display-options label {
+:where(.workspace) .display-options label {
   flex: 1;
 }
-.expression-card {
+:where(.workspace) .expression-card {
   padding: 16px;
   border: 1px solid var(--border);
   border-radius: 12px;
 }
-.expression-card legend {
+:where(.workspace) .expression-card legend {
   padding: 0 7px;
 }
-.expression-card > .option-grid {
+:where(.workspace) .expression-card > .option-grid {
   margin-bottom: 16px;
 }
-.lesson-card > p {
+:where(.workspace) .lesson-card > p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 @media (max-width: 600px) {
-  .display-options {
+  :where(.workspace) .display-options {
     flex-direction: column;
     align-items: stretch;
   }
