@@ -106,22 +106,22 @@ erDiagram
     %% RELATIONSHIPS
     USERS }o--o| CLASSES : "enrolled in class (Student)"
     USERS ||--o{ CLASSES : "assigned to teach (Teacher)"
-    
+
     USERS ||--o{ LESSONS : "authors lesson (Teacher/Admin)"
     LESSONS ||--o{ CLASS_LESSONS : "assigned to whole class"
     CLASSES ||--o{ CLASS_LESSONS : "given to students in class"
-    
+
     LESSONS ||--o{ VOCABULARY_CONCEPTS : "teaches conceptual meaning"
     VOCABULARY_CONCEPTS ||--o{ CHINESE_EXPRESSIONS : "represented by character(s)"
     VOCABULARY_CONCEPTS ||--o{ EXAMPLE_SENTENCES : "demonstrated in"
     CHINESE_EXPRESSIONS ||--o{ PRONUNCIATIONS : "spoken as"
-    
+
     LESSONS ||--o{ QUESTIONS : "contains practice questions"
     VOCABULARY_CONCEPTS ||--o{ QUESTIONS : "provides reference for question"
-    
+
     USERS ||--o{ LESSON_ATTEMPTS : "works on lesson (Student)"
     LESSONS ||--o{ LESSON_ATTEMPTS : "generates progress record"
-    
+
     LESSON_ATTEMPTS ||--o{ QUESTION_RESPONSES : "saves student answer"
     QUESTIONS ||--o{ QUESTION_RESPONSES : "receives student answer"
 ```

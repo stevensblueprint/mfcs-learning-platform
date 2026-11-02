@@ -55,7 +55,7 @@ export default function SupportPage() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFields((prev) => ({ ...prev, [name]: value }));
@@ -85,7 +85,7 @@ export default function SupportPage() {
       setServerErrorMessage(
         err instanceof Error
           ? err.message
-          : "Something went wrong. Please try again later."
+          : "Something went wrong. Please try again later.",
       );
     }
   };
@@ -107,8 +107,8 @@ export default function SupportPage() {
         >
           <p className="font-semibold">Request Submitted</p>
           <p className="text-sm mt-1">
-            Your request has been submitted! We&apos;ll get back to you as soon as
-            possible.
+            Your request has been submitted! We&apos;ll get back to you as soon
+            as possible.
           </p>
         </div>
       )}
@@ -120,7 +120,8 @@ export default function SupportPage() {
         >
           <p className="font-semibold">Submission Failed</p>
           <p className="text-sm mt-1">
-            {serverErrorMessage || "Something went wrong. Please try again later."}
+            {serverErrorMessage ||
+              "Something went wrong. Please try again later."}
           </p>
         </div>
       )}
