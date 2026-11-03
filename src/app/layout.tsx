@@ -29,8 +29,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MFCS",
-  description: "MFCS Portal and Technical Support",
+  title: {
+    default: "MFCS | Monmouth Fidelity Chinese School",
+    template: "%s | MFCS",
+  },
+  description:
+    "The learning platform for Monmouth Fidelity Chinese School.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

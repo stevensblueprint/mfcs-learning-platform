@@ -729,3 +729,98 @@ body {
     align-items: stretch;
   }
 }
+
+/* TEMP: Basic homepage styling */
+
+/* Basic public-page styling using the shared theme. */
+.landing-page,
+.destination-page {
+  flex: 1;
+  padding: clamp(24px, 6vw, 80px);
+}
+
+.hero,
+.destination-content {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.hero h1,
+.destination-content h1 {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.15;
+  margin: 0 0 24px;
+}
+
+.hero-description,
+.destination-content p {
+  max-width: 42rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.button,
+.hero-support,
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: inherit;
+  text-underline-offset: 5px;
+}
+
+.button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.button-primary {
+  background: var(--gold);
+  color: #630c03;
+}
+
+.brand-mark {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 28px;
+}
+
+.hero-art {
+  margin-top: 48px;
+}
+
+.art-signature {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.skip-link {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  padding: 12px 16px;
+  background: white;
+  color: var(--navy);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(.landing-page, .destination-page) a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
