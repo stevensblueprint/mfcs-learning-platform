@@ -27,7 +27,7 @@ export default function LoginPage() {
   return (
     <main>
       <form onSubmit={handleSubmit}>
-        <h1>Log in to MCFS</h1>
+        <h1>Log in to MFCS</h1>
 
         {error && <p role="alert">{error}</p>}
 
