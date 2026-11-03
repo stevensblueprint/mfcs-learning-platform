@@ -9,7 +9,7 @@ export interface SupportRequestData {
 }
 
 export async function submitSupportRequest(
-  data: SupportRequestData
+  data: SupportRequestData,
 ): Promise<{ success: true }> {
   const { name, email, role, subject, description } = data;
 
