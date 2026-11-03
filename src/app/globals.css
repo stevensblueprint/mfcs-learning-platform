@@ -1,3 +1,826 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+:root {
+  --red: #ad0d11;
+  --gold: #e9ae2a;
+  --navy: #01234b;
+  --cream: #fdf6ec;
+  --coral: #fa897f;
+  --muted: #68717d;
+  --border: #eadfd2;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--font-body), Arial, sans-serif;
+}
+:where(.workspace) button,
+:where(.workspace) input,
+:where(.workspace) textarea,
+:where(.workspace) select {
+  font: inherit;
+}
+:where(.workspace) button,
+:where(.workspace) a,
+:where(.workspace) input,
+:where(.workspace) textarea,
+:where(.workspace) select {
+  touch-action: manipulation;
+}
+:where(.workspace) button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 17px;
+  background: white;
+  color: var(--navy);
+  font-weight: 600;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+:where(.workspace) button:hover {
+  background: #fff0d6;
+}
+:where(.workspace) button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+:where(.workspace) a {
+  color: inherit;
+  text-decoration: none;
+}
+:where(.workspace) a:hover {
+  text-decoration: underline;
+}
+:where(.workspace) button:focus-visible,
+:where(.workspace) a:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+:where(.workspace) input:focus,
+:where(.workspace) textarea:focus,
+:where(.workspace) select:focus {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+.workspace {
+  width: min(1240px, 92%);
+  margin: auto;
+  padding: 26px 0 70px;
+}
+:where(.workspace) .breadcrumb {
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+:where(.workspace) .breadcrumb span {
+  color: #baa79a;
+}
+:where(.workspace) .page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 18px;
+  gap: 16px;
+}
+:where(.workspace) .eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #a45832;
+  margin: 0 0 12px;
+}
+:where(.workspace) h1 {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: 0;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+:where(.workspace) h2 {
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+  margin: 0 0 9px;
+}
+:where(.workspace) h3 {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 25px 0 14px;
+}
+:where(.workspace) p {
+  line-height: 1.6;
+}
+:where(.workspace) .page-heading p:last-child {
+  color: var(--muted);
+  margin: 0;
+}
+:where(.workspace) .heading-dragon {
+  object-fit: contain;
+  margin-right: 30px;
+}
+:where(.workspace) .demo-note {
+  color: #776c5c;
+  font-size: 12px;
+  margin: 0 0 24px;
+  padding: 10px 15px;
+  border-left: 3px solid var(--gold);
+  background: #f6ecdc;
+}
+:where(.workspace) .primary {
+  background: var(--gold);
+  color: #630c03;
+  border-color: var(--gold);
+  box-shadow: 0 2px 0 #c78a13;
+}
+:where(.workspace) .primary:hover {
+  background: #f4bd43;
+}
+:where(.workspace) .library-toolbar,
+:where(.workspace) .editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 22px 0;
+}
+:where(.workspace) .filters {
+  display: flex;
+  background: #f0e7db;
+  border-radius: 14px;
+  padding: 4px;
+  gap: 3px;
+}
+:where(.workspace) .filters button {
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+:where(.workspace) .filters .selected {
+  background: white;
+  box-shadow: 0 2px 5px #01234b0a;
+}
+:where(.workspace) .search {
+  display: block;
+  max-width: 360px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+:where(.workspace) .search input {
+  margin-top: 8px;
+}
+:where(.workspace) .lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+:where(.workspace) .lesson-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 0 #eadfd23b;
+}
+:where(.workspace) .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+:where(.workspace) .lesson-symbol {
+  font-size: 28px;
+  background: #fff0cc;
+  border-radius: 14px;
+  padding: 9px 16px;
+  color: #a56116;
+}
+:where(.workspace) .badge {
+  display: inline-flex;
+  background: #f5eddf;
+  border-radius: 30px;
+  padding: 6px 12px;
+  font-size: 12px;
+  white-space: nowrap;
+  align-self: start;
+}
+:where(.workspace) .published {
+  background: #e4f0e6;
+  color: #376842;
+}
+:where(.workspace) .lesson-card h2 {
+  font-size: 21px;
+}
+:where(.workspace) .lesson-card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+:where(.workspace) .lesson-card small {
+  font-size: 12px;
+  color: #6a625a;
+}
+:where(.workspace) .class-summary {
+  margin-top: auto;
+  padding-top: 14px;
+}
+:where(.workspace) .lesson-card footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  gap: 8px;
+}
+:where(.workspace) .lesson-card footer button {
+  padding: 6px 0;
+  border: 0;
+  font-size: 13px;
+  background: none;
+}
+:where(.workspace) .text-danger {
+  color: #a52e2e !important;
+}
+:where(.workspace) .empty-state {
+  grid-column: 1/-1;
+  text-align: center;
+  background: #fffaf3;
+  border: 1px dashed #d9baa0;
+  border-radius: 22px;
+  padding: 42px 20px;
+}
+:where(.workspace) .empty-state img {
+  margin: 0 auto 15px;
+  object-fit: contain;
+}
+:where(.workspace) .empty-state p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+:where(.workspace) .editor-toolbar {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+:where(.workspace) .editor-toolbar > span {
+  margin-right: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+:where(.workspace) .editor-toolbar button {
+  font-size: 13px;
+}
+:where(.workspace) .editor-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+:where(.workspace) .lesson-outline {
+  padding-top: 14px;
+}
+:where(.workspace) .lesson-outline > button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: left;
+  padding: 15px;
+}
+:where(.workspace) .lesson-outline > button > span {
+  border: 1px solid #d9cbbc;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+}
+:where(.workspace) .lesson-outline > button small {
+  margin-left: auto;
+}
+:where(.workspace) .lesson-outline > button.active {
+  background: #f8e6c0;
+  color: #713d12;
+}
+:where(.workspace) .lesson-outline > button.active > span {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+:where(.workspace) .teacher-tip {
+  border-top: 1px solid var(--border);
+  margin: 28px 12px 0;
+  padding-top: 24px;
+  font-size: 13px;
+}
+:where(.workspace) .teacher-tip p {
+  color: var(--muted);
+  font-size: 13px;
+}
+:where(.workspace) .teacher-tip > span {
+  font-size: 12px;
+  color: #a45832;
+}
+:where(.workspace) .editor-panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: 0 5px 0 #eadfd23b;
+}
+:where(.workspace) .section-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+}
+:where(.workspace) .section-heading p:last-child {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+:where(.workspace) .form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+:where(.workspace) label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+}
+:where(.workspace) label > span:not(.class-option span),
+:where(.workspace) legend > span {
+  color: var(--red);
+}
+:where(.workspace) input:not([type="checkbox"]):not([type="radio"]),
+:where(.workspace) textarea,
+:where(.workspace) select {
+  display: block;
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid #d9cbbc;
+  border-radius: 10px;
+  color: var(--navy);
+  background: #fffefa;
+  margin-top: 9px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+:where(.workspace) input::placeholder,
+:where(.workspace) textarea::placeholder {
+  color: #9a9690;
+}
+:where(.workspace) textarea {
+  resize: vertical;
+}
+:where(.workspace) fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+:where(.workspace) legend {
+  font-size: 14px;
+  font-weight: 600;
+}
+:where(.workspace) .hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 7px 0 12px;
+}
+:where(.workspace) .class-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+:where(.workspace) .class-option {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  padding: 15px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+:where(.workspace) .class-option.checked {
+  border-color: var(--coral);
+  background: #fff6f0;
+}
+:where(.workspace) .class-option input {
+  margin-top: 4px;
+  accent-color: var(--red);
+}
+:where(.workspace) .class-option span {
+  color: var(--navy) !important;
+}
+:where(.workspace) .class-option strong {
+  font-size: 12px;
+}
+:where(.workspace) .class-option small {
+  display: block;
+  font-size: 10px;
+  font-weight: normal;
+  margin-top: 4px;
+  color: var(--muted);
+}
+:where(.workspace) .step-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+  padding-top: 24px;
+}
+:where(.workspace) .step-footer p {
+  font-size: 11px;
+  color: var(--muted);
+}
+:where(.workspace) .step-footer button {
+  font-size: 13px;
+}
+:where(.workspace) .item-card {
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 14px;
+  background: #fffcf7;
+}
+:where(.workspace) .item-card legend {
+  padding: 0 8px;
+}
+:where(.workspace) .row-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+:where(.workspace) .row-actions button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+:where(.workspace) .vocab-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 12px;
+}
+:where(.workspace) .add-button {
+  border: 1.5px dashed var(--coral);
+  background: #fff9f4;
+  padding: 16px;
+  color: #9b3a2d;
+}
+:where(.workspace) .inline-empty {
+  padding: 40px 24px;
+  background: #fdf6ec;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+:where(.workspace) .option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+:where(.workspace) .error-box {
+  border: 1px solid #ebaaa4;
+  background: #fff0ed;
+  color: #9c2525;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 15px 0;
+}
+:where(.workspace) .error-box p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+:where(.workspace) .preview-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  background: #01234b99;
+  z-index: 50;
+  padding: 30px;
+  overflow: auto;
+  color: var(--navy);
+}
+:where(.workspace) .preview-content {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--cream);
+  border-radius: 24px;
+  padding: 40px;
+}
+:where(.workspace) .close-preview {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+:where(.workspace) .preview-content > h2 {
+  font-size: 32px;
+  padding-right: 30px;
+}
+:where(.workspace) .preview-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+:where(.workspace) .preview-words > div {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 18px;
+  text-align: center;
+  border-radius: 14px;
+  min-width: 120px;
+}
+:where(.workspace) .preview-words strong {
+  display: block;
+  font-size: 26px;
+}
+:where(.workspace) .preview-words span {
+  font-size: 13px;
+  color: #a45832;
+}
+:where(.workspace) .preview-words p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+:where(.workspace) .preview-question {
+  padding: 18px;
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+:where(.workspace) .preview-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+}
+:where(.workspace) .preserve-lines {
+  white-space: pre-wrap;
+}
+@media (max-width: 900px) {
+  :where(.workspace) .lesson-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  :where(.workspace) .editor-layout {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) .lesson-outline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0;
+  }
+  :where(.workspace) .lesson-outline > .eyebrow,
+  :where(.workspace) .teacher-tip {
+    display: none;
+  }
+  :where(.workspace) .lesson-outline > button {
+    width: auto;
+    flex: 1;
+    margin: 0;
+    padding: 12px;
+  }
+  :where(.workspace) .class-options {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) .heading-dragon {
+    margin: 0;
+    width: 90px;
+    height: 106px;
+  }
+}
+@media (max-width: 600px) {
+  .workspace {
+    width: 92%;
+    padding-top: 20px;
+  }
+  :where(.workspace) .page-heading {
+    padding-top: 24px;
+  }
+  :where(.workspace) .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  :where(.workspace) h1 {
+    letter-spacing: -1px;
+  }
+  :where(.workspace) .page-heading p:last-child {
+    font-size: 13px;
+  }
+  :where(.workspace) .heading-dragon {
+    width: 75px;
+    height: 88px;
+  }
+  :where(.workspace) .library-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  :where(.workspace) .filters {
+    justify-content: center;
+  }
+  :where(.workspace) .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) .editor-panel {
+    padding: 20px 16px;
+  }
+  :where(.workspace) .editor-toolbar > span {
+    width: 50%;
+    margin: 0;
+  }
+  :where(.workspace) .editor-toolbar button {
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+  :where(.workspace) .lesson-outline > button {
+    font-size: 11px;
+    gap: 5px;
+    padding: 10px 5px;
+  }
+  :where(.workspace) .lesson-outline > button small {
+    display: none;
+  }
+  :where(.workspace) .vocab-fields,
+  :where(.workspace) .option-grid {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) .step-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  :where(.workspace) .step-footer p {
+    margin: 0;
+  }
+  :where(.workspace) .preview-dialog {
+    padding: 12px;
+  }
+  :where(.workspace) .preview-content {
+    padding: 28px 20px;
+  }
+  :where(.workspace) .section-heading h2 {
+    font-size: 22px;
+  }
+}
+
+:where(.workspace) .display-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+:where(.workspace) .display-options {
+  display: flex;
+  gap: 18px;
+  align-items: end;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 0 22px;
+}
+:where(.workspace) .display-options label {
+  flex: 1;
+}
+:where(.workspace) .expression-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+:where(.workspace) .expression-card legend {
+  padding: 0 7px;
+}
+:where(.workspace) .expression-card > .option-grid {
+  margin-bottom: 16px;
+}
+:where(.workspace) .lesson-card > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  :where(.workspace) .display-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* TEMP: Basic homepage styling */
+
+/* Basic public-page styling using the shared theme. */
+.landing-page,
+.destination-page {
+  flex: 1;
+  padding: clamp(24px, 6vw, 80px);
+}
+
+.hero,
+.destination-content {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.hero h1,
+.destination-content h1 {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.15;
+  margin: 0 0 24px;
+}
+
+.hero-description,
+.destination-content p {
+  max-width: 42rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.button,
+.hero-support,
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: inherit;
+  text-underline-offset: 5px;
+}
+
+.button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.button-primary {
+  background: var(--gold);
+  color: #630c03;
+}
+
+.brand-mark {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 28px;
+}
+
+.hero-art {
+  margin-top: 48px;
+}
+
+.art-signature {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.skip-link {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  padding: 12px 16px;
+  background: white;
+  color: var(--navy);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(.landing-page, .destination-page) a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
