@@ -69,19 +69,9 @@ body {
   outline-offset: 2px;
 }
 .workspace {
-  width: min(1240px, 92%);
-  margin: auto;
-  padding: 26px 0 70px;
-}
-:where(.workspace) .breadcrumb {
-  color: var(--muted);
-  font-size: 13px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-:where(.workspace) .breadcrumb span {
-  color: #baa79a;
+  width: 100%;
+  margin: 0;
+  padding: 26px clamp(20px, 3vw, 48px) 70px;
 }
 :where(.workspace) .page-heading {
   display: flex;
@@ -126,14 +116,6 @@ body {
 :where(.workspace) .heading-dragon {
   object-fit: contain;
   margin-right: 30px;
-}
-:where(.workspace) .demo-note {
-  color: #776c5c;
-  font-size: 12px;
-  margin: 0 0 24px;
-  padding: 10px 15px;
-  border-left: 3px solid var(--gold);
-  background: #f6ecdc;
 }
 :where(.workspace) .primary {
   background: var(--gold);
@@ -180,7 +162,7 @@ body {
 }
 :where(.workspace) .lesson-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 22px;
 }
 :where(.workspace) .lesson-card {
@@ -617,8 +599,8 @@ body {
 }
 @media (max-width: 600px) {
   .workspace {
-    width: 92%;
-    padding-top: 20px;
+    width: 100%;
+    padding: 20px 16px 48px;
   }
   :where(.workspace) .page-heading {
     padding-top: 24px;

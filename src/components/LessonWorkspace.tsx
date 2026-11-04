@@ -152,14 +152,6 @@ export default function LessonWorkspace() {
   });
   return (
     <main className="workspace">
-      <div className="breadcrumb">
-        Teacher workspace <span>/</span> My lessons{" "}
-        {lesson && (
-          <>
-            <span>/</span> {lesson.title || "New lesson"}
-          </>
-        )}
-      </div>
       <section className="page-heading">
         <div>
           <p className="eyebrow">A LITTLE PREPARATION. A WORLD OF DISCOVERY.</p>
@@ -179,10 +171,6 @@ export default function LessonWorkspace() {
           height={136}
         />
       </section>
-      <div className="demo-note">
-        Demo workspace · Lessons are saved in this browser. Class access uses a
-        mock teacher account.
-      </div>
       {errors.length > 0 && (
         <div role="alert" className="error-box">
           {errors.map((error) => (
