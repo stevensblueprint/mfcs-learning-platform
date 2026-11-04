@@ -20,10 +20,10 @@ test("overview uses the newest published lesson and its counts add up", () => {
 });
 
 test("student progress is derived from their lesson results", () => {
-  const lily = mockStudents.find((s) => s.name === "Lily Zhao");
+  const lily = mockStudents.find((s) => s.name === "Lily");
   assert.equal(percentComplete(lily), 33);
   assert.equal(latestCompleted(lily).title, "Numbers 1 to 10");
-  const mia = mockStudents.find((s) => s.name === "Mia Chen");
+  const mia = mockStudents.find((s) => s.name === "Mia");
   assert.equal(percentComplete(mia), 100);
   assert.equal(latestCompleted(mia).title, "Food Vocabulary");
 });
