@@ -19,6 +19,7 @@ Next.js application built with React, TypeScript, and Tailwind CSS.
    ```
 
 4. Apply committed migrations:
+
    ```sh
    npm run db:migrate
    ```
@@ -29,7 +30,7 @@ Next.js application built with React, TypeScript, and Tailwind CSS.
    npm run dev
    ```
 
-5. Open http://localhost:3000 or the address in the terminal.
+6. Open http://localhost:3000 or the address in the terminal.
 
 ## Database Changes
 
@@ -70,8 +71,10 @@ npm start
 
 ## Lesson workspace demo
 
-Open `/` or `/lessons` to create lessons, edit metadata and instructions, assign classes,
-reorder vocabulary and questions, and preview the student view. Changes autosave after
+The public home page is `/`. Sign in at `/login` with username `admin` and password
+`admin`, then continue to `/lessons` to create lessons, edit metadata and instructions,
+assign classes, reorder vocabulary and questions, and preview the student view.
+The lessons route uses the browser-local mock session and redirects logged-out visitors to login. Changes autosave after
 1.2 seconds; Save draft saves immediately. Publish validates required content.
 
 `src/lib/lessons.ts` exposes the `LessonRepository` interface. The demo implementation
@@ -119,3 +122,22 @@ oldest first, title A–Z, class A–Z, week number, and assigned/unassigned cla
 These run against browser data and combine with search and Draft/Published tabs.
 
 Run `npm run format` to normalize the codebase, and `npm run format:check` to verify it.
+
+## Reviewing the home and login branch
+
+Run `npm ci` and `npm run dev`, then open `http://localhost:3000`.
+The home page uses the Amaro Figma artwork, and login accepts only `admin` / `admin`.
+After login, the success dialog continues to the lessons dashboard. The Lessons navigation
+link appears while signed in, and Log out clears the mock session. `/dashboard` redirects
+to `/lessons`. Password recovery accepts `admin` or `admin@mfcs.test`; its confirmation
+is a UI mock and does not send email or change passwords.
+
+To show the two basic lesson samples, set `NEXT_PUBLIC_MFCS_DEMO_DATA=true` in your
+`.env.local` and restart the development server. This flag is included in `.env.example`.
+The samples are **Hello 你好** (published) and **Number One 一** (draft), each with
+one vocabulary concept and one question. `src/lib/demo-lessons.ts` contains the fixtures.
+
+Seeding runs once per browser. It replaces the five earlier large demo lessons and removes
+their dependent mock rows, while preserving lessons you created yourself. Edits and deletions
+to the new samples persist. Set the flag to `false` to disable future seeding; existing browser
+data remains. The sample data does not require PostgreSQL.
