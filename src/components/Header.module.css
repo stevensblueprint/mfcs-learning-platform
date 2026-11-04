@@ -48,6 +48,19 @@
 .supportLink:hover {
   background: #f4bb3c;
 }
+.navigation > .dashboardButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 16px;
+  background: #e9ae2a;
+  color: #630c03;
+  text-decoration: none;
+}
+.navigation > .dashboardButton:hover {
+  background: #f4bb3c;
+}
 .supportHeader a:focus-visible,
 .supportHeader button:focus-visible {
   outline: 3px solid white;
@@ -68,6 +81,10 @@
   }
   .supportLink {
     min-width: 80px;
+    padding: 9px 12px;
+    border-radius: 12px;
+  }
+  .navigation > .dashboardButton {
     padding: 9px 12px;
     border-radius: 12px;
   }

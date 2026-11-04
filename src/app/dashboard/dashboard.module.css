@@ -1,14 +1,17 @@
 .page {
+  /* Values from the Figma login draft, drawn on a 1512px frame. */
+  --unit: min(1px, calc(100vw / 1512));
+  --line: #f28c80;
+  --line-soft: #fbdfda;
+  --line-width: 5px;
+  --control-line-width: 3px;
+  --cloud-fill: #fff3ec;
+  --muted: #716c6c;
   flex: 1;
   background: var(--cream);
   color: #000;
   font-family: var(--font-body), Arial, sans-serif;
-  font-size: 16px;
-}
-.loading {
-  padding: 40px 24px;
-  text-align: center;
-  color: var(--navy);
+  font-size: max(16px, calc(18 * var(--unit)));
 }
 .scene {
   position: relative;
@@ -27,15 +30,15 @@
 .title {
   margin: 0;
   font-family: var(--font-heading), sans-serif;
-  font-size: clamp(38px, 5.2vw, 72px);
+  font-size: max(38px, calc(100 * var(--unit)));
   font-weight: 400;
   line-height: 1.15;
   text-align: center;
   color: var(--navy);
 }
 .subtitle {
-  margin: 10px 0 0;
-  font-size: clamp(16px, 1.6vw, 20px);
+  margin: max(8px, calc(14 * var(--unit))) 0 0;
+  font-size: max(16px, calc(24 * var(--unit)));
   font-weight: 700;
   line-height: 1.3;
   text-align: center;
@@ -43,7 +46,7 @@
 }
 .mockNote {
   margin: 8px 0 0;
-  color: #68717d;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
@@ -56,17 +59,24 @@
 }
 .cloudLeft {
   left: clamp(16px, 2.2vw, 36px);
-  top: 32px;
-  width: min(13vw, 210px);
+  top: 64px;
+  width: min(19vw, 300px);
   aspect-ratio: 343 / 223;
   background-image: url("/support/cloud-left.svg");
 }
 .cloudRight {
   right: clamp(16px, 2.2vw, 36px);
-  top: 48px;
-  width: min(15vw, 240px);
+  top: 112px;
+  width: min(21vw, 320px);
   aspect-ratio: 456 / 247;
   background-image: url("/login/cloud-right.svg");
+}
+.cloudBottom {
+  left: clamp(16px, 2.8vw, 44px);
+  bottom: 24px;
+  width: min(21vw, 300px);
+  aspect-ratio: 380 / 272;
+  background-image: url("/support/cloud-bottom.svg");
 }
 .overview {
   display: flex;
@@ -75,7 +85,7 @@
   gap: 24px;
   margin-top: 32px;
   padding: 24px 28px;
-  border: 3px solid var(--coral);
+  border: var(--line-width) solid var(--line);
   border-radius: 16px;
   background: white;
 }
@@ -85,7 +95,7 @@
 }
 .overviewLabel {
   margin: 0;
-  color: #68717d;
+  color: var(--muted);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
@@ -115,7 +125,7 @@
   height: 10px;
   margin: 14px 0 18px;
   border-radius: 999px;
-  background: #f1e7d8;
+  background: var(--line-soft);
   overflow: hidden;
 }
 .progressFill {
@@ -125,7 +135,7 @@
 }
 .dragon {
   flex-shrink: 0;
-  width: clamp(96px, 12vw, 150px);
+  width: clamp(96px, 12vw, 176px);
   height: auto;
   pointer-events: none;
 }
@@ -133,22 +143,22 @@
   display: flex;
   gap: 8px;
   margin-top: 32px;
-  border-bottom: 2px solid #e0d5c9;
+  border-bottom: var(--control-line-width) solid var(--line);
 }
 .tab {
   min-height: 44px;
-  margin-bottom: -2px;
+  margin-bottom: calc(var(--control-line-width) * -1);
   padding: 10px 22px;
   border: 0;
-  border-bottom: 4px solid transparent;
+  border-bottom: var(--line-width) solid transparent;
   background: transparent;
   color: var(--navy);
   font: inherit;
-  font-size: 18px;
+  font-size: max(18px, calc(24 * var(--unit)));
   cursor: pointer;
 }
 .tab:hover {
-  background: #f8ecdc;
+  background: var(--cloud-fill);
 }
 .tab[aria-selected="true"] {
   border-bottom-color: var(--red);
@@ -172,15 +182,15 @@
 .chip {
   min-height: 44px;
   padding: 8px 16px;
-  border: 2px solid #e0d5c9;
-  border-radius: 14px;
+  border: var(--control-line-width) solid var(--line);
+  border-radius: 16px;
   background: white;
   color: var(--navy);
   font: inherit;
   cursor: pointer;
 }
 .chip:hover {
-  background: #fdf6ec;
+  background: var(--cloud-fill);
 }
 .chip[aria-pressed="true"] {
   border-color: var(--navy);
@@ -192,9 +202,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 10px 20px;
-  border-radius: 14px;
+  min-height: max(44px, calc(49 * var(--unit)));
+  padding: 10px 24px;
+  border-radius: 16px;
   font: inherit;
   line-height: 1.2;
   text-decoration: none;
@@ -210,12 +220,12 @@
   background: #f4bb3c;
 }
 .secondaryButton {
-  border: 2px solid #e0d5c9;
+  border: var(--control-line-width) solid var(--line);
   background: white;
   color: var(--navy);
 }
 .secondaryButton:hover {
-  background: #fdf6ec;
+  background: var(--cloud-fill);
 }
 .announcement {
   min-height: 22px;
@@ -239,17 +249,17 @@
   width: 100%;
   height: 100%;
   padding: 18px 20px;
-  border: 2px solid #e0d5c9;
-  border-radius: 14px;
+  border: var(--line-width) solid var(--line);
+  border-radius: 16px;
   background: white;
   color: #000;
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.15s;
+  transition: background-color 0.15s;
 }
 .lessonCard:hover {
-  border-color: var(--coral);
+  background: var(--cloud-fill);
 }
 .lessonTop {
   display: flex;
@@ -258,7 +268,7 @@
   gap: 8px;
 }
 .lessonWeek {
-  color: #68717d;
+  color: var(--muted);
   font-size: 14px;
 }
 .lessonTitle {
@@ -268,7 +278,7 @@
   line-height: 1.25;
 }
 .lessonMeta {
-  color: #5b6470;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.4;
 }
@@ -293,20 +303,29 @@
 }
 .field label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: max(16px, calc(24 * var(--unit)));
   line-height: 1.2;
 }
 .field input,
 .field select {
   display: block;
   width: 100%;
-  height: 48px;
-  border: 2px solid #e0d5c9;
-  border-radius: 14px;
-  padding: 10px 14px;
+  height: max(44px, calc(66 * var(--unit)));
+  border: var(--line-width) solid var(--line);
+  border-radius: 16px;
+  padding: 10px 16px;
   background: white;
   color: #000;
   font: inherit;
+}
+.field select {
+  appearance: none;
+  padding-right: 52px;
+  background-image: url("/support/select-arrow.png");
+  background-size: 28px 28px;
+  background-position: right 14px center;
+  background-repeat: no-repeat;
 }
 .field input::placeholder {
   color: #797474;
@@ -321,8 +340,8 @@
 .tableScroll {
   margin-top: 16px;
   overflow-x: auto;
-  border: 2px solid #e0d5c9;
-  border-radius: 14px;
+  border: var(--line-width) solid var(--line);
+  border-radius: 16px;
   background: white;
 }
 .table {
@@ -334,12 +353,12 @@
 .table th,
 .table td {
   padding: 12px 16px;
-  border-bottom: 1px solid #eadfd2;
+  border-bottom: 1px solid var(--line-soft);
   text-align: left;
   vertical-align: middle;
 }
 .table th {
-  background: #fdf6ec;
+  background: var(--cloud-fill);
   color: var(--navy);
   font-size: 14px;
   font-weight: 700;
@@ -348,7 +367,7 @@
   border-bottom: 0;
 }
 .table tbody tr:hover {
-  background: #fffaf3;
+  background: var(--cloud-fill);
 }
 .sortButton {
   padding: 4px 0;
@@ -378,26 +397,29 @@
 }
 .empty {
   margin: 16px 0 0;
-  color: #5b6470;
+  color: var(--muted);
   text-align: center;
 }
 .dialog {
   box-sizing: border-box;
   position: fixed;
   inset: 0;
-  width: min(720px, calc(100vw - 32px));
+  width: min(722px, calc(100vw - 32px));
   max-height: calc(100svh - 32px);
   margin: auto;
   padding: 0;
   overflow: auto;
-  border: 3px solid var(--coral);
-  border-radius: 16px;
+  border: var(--line-width) solid var(--line);
+  border-radius: 21px;
   background: white;
   color: #000;
   font-family: var(--font-body), Arial, sans-serif;
 }
 .dialog .table {
   min-width: 500px;
+}
+.dialog .tableScroll {
+  border-width: var(--control-line-width);
 }
 .dialog::backdrop {
   background: rgb(0 0 0 / 0.39);
@@ -417,7 +439,7 @@
 }
 .dialogSubtitle {
   margin: 8px 0 0;
-  color: #5b6470;
+  color: var(--muted);
   line-height: 1.4;
 }
 .closeButton {
@@ -436,7 +458,7 @@
   cursor: pointer;
 }
 .closeButton:hover {
-  background: #fdf6ec;
+  background: var(--cloud-fill);
 }
 .details {
   display: grid;
@@ -445,7 +467,7 @@
   margin: 20px 0 0;
 }
 .details dt {
-  color: #68717d;
+  color: var(--muted);
   font-size: 14px;
 }
 .details dd {
@@ -461,7 +483,7 @@
 .notice {
   min-height: 20px;
   margin: 12px 0 0;
-  color: #5b6470;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.4;
 }
@@ -483,6 +505,10 @@
   }
 }
 @media (max-width: 760px) {
+  .page {
+    --line-width: 3px;
+    --control-line-width: 2px;
+  }
   .scene {
     min-height: calc(100svh - 76px);
     padding: 28px 16px 40px;

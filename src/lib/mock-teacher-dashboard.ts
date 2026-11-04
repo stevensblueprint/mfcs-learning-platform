@@ -26,7 +26,7 @@ export type MockStudent = {
   results: Record<number, MockResult>;
 };
 
-export const teacherName = "Ms. Zhou";
+export const teacherName = "PLACEHOLDER";
 export const classNames = ["Beginner A", "Beginner B"];
 
 const NUMBERS = 1;

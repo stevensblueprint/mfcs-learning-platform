@@ -46,14 +46,14 @@ export default function Header() {
               {label}
             </Link>
           ))}
-        {session && (
-          <Link
-            href="/dashboard"
-            aria-current={pathname === "/dashboard" ? "page" : undefined}
-          >
-            Dashboard
-          </Link>
-        )}
+        {/* Open to everyone for now so the mock can be reviewed without logging in. */}
+        <Link
+          href="/dashboard"
+          className={styles.dashboardButton}
+          aria-current={pathname === "/dashboard" ? "page" : undefined}
+        >
+          Teacher Dashboard
+        </Link>
         {session && (
           <Link
             href="/lessons"

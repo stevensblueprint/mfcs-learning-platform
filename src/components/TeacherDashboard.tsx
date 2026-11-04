@@ -1,23 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   useEffect,
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { useRouter } from "next/navigation";
 import styles from "@/app/dashboard/dashboard.module.css";
-import {
-  getSessionSnapshot,
-  parseSession,
-  subscribeToSession,
-} from "@/lib/mockAuth";
 import {
   assignedLessons,
   classNames,
@@ -32,10 +24,6 @@ import {
   type MockLessonStatus,
   type MockStudent,
 } from "@/lib/mock-teacher-dashboard";
-
-const subscribeHydration = () => () => {};
-const clientSnapshot = () => true;
-const serverSnapshot = () => false;
 
 const tabs = ["Lessons", "Students"] as const;
 type Tab = (typeof tabs)[number];
@@ -242,19 +230,6 @@ function StudentProgress({
 }
 
 export default function TeacherDashboard() {
-  const router = useRouter();
-  const hydrated = useSyncExternalStore(
-    subscribeHydration,
-    clientSnapshot,
-    serverSnapshot,
-  );
-  const raw = useSyncExternalStore(
-    subscribeToSession,
-    getSessionSnapshot,
-    () => null,
-  );
-  const session = useMemo(() => parseSession(raw), [raw]);
-
   const [tab, setTab] = useState<Tab>("Lessons");
   const [lessons, setLessons] = useState(mockLessons);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("ALL");
@@ -270,10 +245,6 @@ export default function TeacherDashboard() {
   });
   const [announcement, setAnnouncement] = useState("");
   const tabButtons = useRef<Partial<Record<Tab, HTMLButtonElement | null>>>({});
-
-  useEffect(() => {
-    if (hydrated && !session) router.replace("/login");
-  }, [hydrated, session, router]);
 
   const visibleLessons = useMemo(
     () =>
@@ -301,13 +272,6 @@ export default function TeacherDashboard() {
         return sort.ascending ? order : -order;
       });
   }, [search, classFilter, sort]);
-
-  if (!hydrated || !session)
-    return (
-      <main className={styles.page} role="status">
-        <p className={styles.loading}>Opening your dashboard…</p>
-      </main>
-    );
 
   const overviewLesson = latestPublished(lessons);
   const overview = overviewLesson && lessonCompletion(overviewLesson);
@@ -353,6 +317,10 @@ export default function TeacherDashboard() {
         />
         <div
           className={`${styles.cloud} ${styles.cloudRight}`}
+          aria-hidden="true"
+        />
+        <div
+          className={`${styles.cloud} ${styles.cloudBottom}`}
           aria-hidden="true"
         />
         <div className={styles.content}>
@@ -463,9 +431,17 @@ export default function TeacherDashboard() {
                     </button>
                   ))}
                 </div>
-                <Link href="/lessons" className={styles.goldButton}>
+                <button
+                  type="button"
+                  className={styles.goldButton}
+                  onClick={() =>
+                    setAnnouncement(
+                      "Creating lessons isn’t connected in this mockup.",
+                    )
+                  }
+                >
                   Create lesson
-                </Link>
+                </button>
               </div>
               <p className={styles.announcement} role="status">
                 {announcement}

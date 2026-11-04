@@ -128,8 +128,8 @@ Run `npm run format` to normalize the codebase, and `npm run format:check` to ve
 Run `npm ci` and `npm run dev`, then open `http://localhost:3000`.
 The home page uses the Amaro Figma artwork, and login accepts only `admin` / `admin`.
 After login, the success dialog continues to the lessons dashboard. The Lessons navigation
-link appears while signed in, and Log out clears the mock session. `/dashboard` redirects
-to `/lessons`. Password recovery accepts `admin` or `admin@mfcs.test`; its confirmation
+link appears while signed in, and Log out clears the mock session. `/dashboard` is a mock
+teacher dashboard that needs no login, linked from the header for sponsor feedback. Password recovery accepts `admin` or `admin@mfcs.test`; its confirmation
 is a UI mock and does not send email or change passwords.
 
 To show the two basic lesson samples, set `NEXT_PUBLIC_MFCS_DEMO_DATA=true` in your
