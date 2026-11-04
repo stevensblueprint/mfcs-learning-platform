@@ -85,3 +85,16 @@
     padding-inline: 8px;
   }
 }
+
+.logoutButton {
+  border: 0;
+  background: transparent;
+  color: white;
+  font: inherit;
+  padding-block: 10px;
+  cursor: pointer;
+  text-underline-offset: 6px;
+}
+.logoutButton:hover {
+  text-decoration: underline;
+}
