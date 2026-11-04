@@ -1,0 +1,262 @@
+.page {
+  flex: 1;
+  display: block;
+  width: 100%;
+  background: var(--cream);
+  overflow: clip;
+}
+.canvas {
+  --u: calc(100cqw / 1512);
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  height: calc(100svh - 84px);
+  overflow: clip;
+  isolation: isolate;
+}
+.village {
+  position: absolute;
+  left: calc(564 * var(--u));
+  top: 26.74%;
+  width: calc(977 * var(--u));
+  height: 86%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.villageImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 134.4%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+  max-width: none;
+}
+.copyBubble {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: auto;
+  right: 2%;
+  container-type: inline-size;
+  width: min(42.2%, calc((100svh - 84px) * 638 / 616));
+  aspect-ratio: 638 / 616;
+  background: url("/home/title-bubble.svg") center / contain no-repeat;
+}
+.heading {
+  position: absolute;
+  left: 17.4%;
+  top: 12.9%;
+  width: 82.6%;
+  margin: 0;
+  color: #0b2d57;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 20.06cqw;
+  font-weight: 400;
+  line-height: 1.03;
+  text-align: center;
+}
+.heading span {
+  display: block;
+  transform: rotate(-4.22deg);
+}
+.heading span + span {
+  margin-top: -3.76cqw;
+  color: #c91019;
+  transform: rotate(-2.96deg);
+}
+.description {
+  position: absolute;
+  left: 24.5%;
+  top: 52.4%;
+  width: 67.8%;
+  margin: 0;
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 3.76cqw;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+}
+.dragon {
+  position: absolute;
+  z-index: 3;
+  left: 19.38%;
+  top: 6.98%;
+  width: min(67.26%, calc((100svh - 84px) * 1017 / 822));
+  height: auto;
+  pointer-events: none;
+}
+.largeCloud {
+  position: absolute;
+  left: calc(11 * var(--u));
+  top: 11.86%;
+  width: calc(456 * var(--u));
+  aspect-ratio: 456 / 247;
+  background: url("/home/cloud-large.svg") center / contain no-repeat;
+  pointer-events: none;
+}
+.largeCloudCap {
+  position: absolute;
+  left: 37.5%;
+  bottom: 0;
+  width: 51.1%;
+  aspect-ratio: 233 / 110;
+  background: url("/home/cloud-large-cap.svg") center / contain no-repeat;
+}
+.upperCloud,
+.rightCloud {
+  position: absolute;
+  z-index: 4;
+  width: calc(198 * var(--u));
+  aspect-ratio: 198 / 130;
+  background: url("/home/cloud-small.svg") center / contain no-repeat;
+  pointer-events: none;
+}
+.upperCloud {
+  left: calc(785 * var(--u));
+  top: 4.07%;
+}
+.smallCloudCap {
+  position: absolute;
+  left: 19.7%;
+  bottom: 0;
+  width: 46.5%;
+  aspect-ratio: 92 / 49;
+  background: url("/home/cloud-small-cap.svg") center / contain no-repeat;
+}
+.rightCloud {
+  right: calc(12 * var(--u));
+  top: 51.28%;
+}
+.loginBubble {
+  position: absolute;
+  z-index: 2;
+  left: calc(31 * var(--u));
+  top: 43%;
+  width: min(29.7%, calc((100svh - 84px) * 0.55));
+  container-type: inline-size;
+  aspect-ratio: 449 / 419;
+  background: url("/home/login-bubble.svg") center / contain no-repeat;
+  color: white;
+  text-decoration: none;
+}
+.loginBubble span {
+  position: absolute;
+  top: 26.25%;
+  left: 24.72%;
+  right: 6.46%;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 21.38cqw;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+.loginBubble:hover {
+  filter: brightness(1.1);
+}
+.loginBubble:focus-visible {
+  outline: 4px solid var(--gold);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+.foregroundCloud {
+  position: absolute;
+  z-index: 5;
+  left: calc(-160 * var(--u));
+  top: 75%;
+  width: calc(724 * var(--u));
+  height: calc(346 * var(--u));
+  overflow: hidden;
+  pointer-events: none;
+}
+.foregroundImage {
+  position: absolute;
+  left: -96.01%;
+  top: -213.75%;
+  width: 200%;
+  height: 313.87%;
+  max-width: none;
+}
+@media (max-width: 760px) {
+  .page {
+    display: block;
+  }
+  .canvas {
+    width: 100%;
+    height: auto;
+    min-height: 940px;
+  }
+  .copyBubble {
+    right: auto;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: min(94%, 520px);
+  }
+  .heading {
+    left: 10%;
+    width: 80%;
+    font-size: clamp(42px, 12vw, 66px);
+  }
+  .heading span + span {
+    margin-top: -8px;
+  }
+  .description {
+    left: 16%;
+    width: 68%;
+    top: 51%;
+    font-size: clamp(14px, 3.7vw, 19px);
+    line-height: 1.3;
+  }
+  .dragon {
+    top: 365px;
+    left: 0;
+    width: min(100%, 600px);
+  }
+  .village {
+    left: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: 440px;
+  }
+  .villageImage {
+    width: 156%;
+    object-fit: cover;
+    object-position: left bottom;
+  }
+  .largeCloud {
+    top: 334px;
+    left: 12px;
+    width: 140px;
+  }
+  .upperCloud {
+    top: 345px;
+    left: auto;
+    right: 12px;
+    width: 85px;
+  }
+  .rightCloud {
+    top: 680px;
+    right: 16px;
+    width: 100px;
+  }
+  .loginBubble {
+    top: auto;
+    bottom: 60px;
+    left: 16px;
+    width: 260px;
+  }
+  .loginBubble span {
+    font-size: 54px;
+  }
+  .foregroundCloud {
+    left: -60px;
+    top: auto;
+    bottom: -24px;
+    width: 400px;
+    height: 190px;
+  }
+}

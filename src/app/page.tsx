@@ -1,36 +1,64 @@
+import Image from "next/image";
 import Link from "next/link";
+import styles from "./home.module.css";
 
 export default function Home() {
   return (
-    <div className="landing-page">
-      <a className="skip-link" href="#main-content">Skip to content</a>
-
-      {/* Header */}
-
-
-      {/* Main Content */}
-      <main className="hero" id="main-content" tabIndex={-1}>
-        <section className="hero-copy" aria-labelledby="hero-title">
-          <h1 id="hero-title">MFCS Learning Platform</h1>
-          <p className="hero-description">
-            The learning platform for Monmouth Fidelity Chinese School.
-            A place for our students to practice content from home.
-          </p>
-          <div className="hero-actions">
-            <Link className="button button-primary" href="/login">
-              Login <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className="hero-support" href="/support">
-              Contact Support <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </section>
-
-        {/* Decorative panel reserved for future artwork */}
-        <div className="hero-art" aria-hidden="true">
-          <span className="art-signature">MFCS</span>
+    <main
+      className={styles.page}
+      id="main-content"
+      aria-labelledby="home-title"
+    >
+      <div className={styles.canvas}>
+        <div className={styles.village} aria-hidden="true">
+          <Image
+            src="/home/village.png"
+            alt=""
+            width={1672}
+            height={941}
+            className={styles.villageImage}
+            loading="eager"
+          />
         </div>
-      </main>
-    </div>
+        <div className={styles.largeCloud} aria-hidden="true">
+          <span className={styles.largeCloudCap} />
+        </div>
+        <div className={styles.upperCloud} aria-hidden="true">
+          <span className={styles.smallCloudCap} />
+        </div>
+        <div className={styles.rightCloud} aria-hidden="true" />
+        <section className={styles.copyBubble}>
+          <h1 id="home-title" className={styles.heading}>
+            <span>Learn</span>
+            <span>Chinese</span>
+          </h1>
+          <p className={styles.description}>
+            Learn, practice, and grow together. Explore weekly Chinese lessons
+            from Monmouth Fidelity Chinese School.
+          </p>
+        </section>
+        <Link href="/login" className={styles.loginBubble}>
+          <span>Log In</span>
+        </Link>
+        <Image
+          src="/home/dragon.png"
+          alt="A cheerful Chinese dragon welcomes you to MFCS"
+          width={1448}
+          height={1086}
+          className={styles.dragon}
+          loading="eager"
+        />
+        <div className={styles.foregroundCloud} aria-hidden="true">
+          <Image
+            src="/home/foreground-cloud.png"
+            alt=""
+            width={1448}
+            height={1086}
+            className={styles.foregroundImage}
+            loading="eager"
+          />
+        </div>
+      </div>
+    </main>
   );
 }
