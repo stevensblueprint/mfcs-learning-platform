@@ -169,7 +169,7 @@ export default function LoginPage() {
         aria-labelledby="login-success-title"
         aria-describedby="login-success-description"
         onClose={() => {
-          if (succeeded) router.replace("/lessons");
+          if (succeeded) router.replace("/dashboard");
         }}
       >
         <h2 id="login-success-title">Success!</h2>
@@ -180,7 +180,7 @@ export default function LoginPage() {
           className={feedback.goldButton}
           onClick={() => successDialog.current?.close()}
         >
-          Continue to lessons
+          Continue to dashboard
         </button>
       </dialog>
     </main>
