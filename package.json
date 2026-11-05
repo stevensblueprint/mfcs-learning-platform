@@ -12,9 +12,10 @@
     "db:down": "docker compose down",
     "db:migration:create": "node-pg-migrate create --migration-file-language sql --envPath .env.local",
     "db:migrate": "node-pg-migrate up --envPath .env.local",
+    "db:seed": "tsx scripts/seed.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "tsx --test tests/*.test.mjs"
+    "test": "tsx --conditions=react-server --test tests/*.test.mjs"
   },
   "dependencies": {
     "next": "16.4.2",
