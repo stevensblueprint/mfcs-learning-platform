@@ -51,8 +51,7 @@
 .backArrow {
   width: 17px;
   height: 15.8284px;
-  background: url("/icons/back-arrow.svg") center / contain
-    no-repeat;
+  background: url("/icons/back-arrow.svg") center / contain no-repeat;
 }
 .cloudRight::after {
   content: "";
@@ -61,7 +60,8 @@
   left: 21%;
   width: 37%;
   aspect-ratio: 173 / 94;
-  background: url("/illustrations/clouds/recovery-cap.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/recovery-cap.svg") center / contain
+    no-repeat;
 }
 .confirmation {
   display: flex;
