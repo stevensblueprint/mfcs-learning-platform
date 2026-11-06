@@ -8,6 +8,7 @@ import {
   subscribeToSession,
 } from "@/lib/mockAuth";
 import LessonWorkspace from "./LessonWorkspace";
+import styles from "./LessonWorkspace.module.css";
 
 const subscribeHydration = () => () => {};
 const clientSnapshot = () => true;
@@ -31,7 +32,7 @@ export default function LessonDashboard() {
   }, [hydrated, session, router]);
   if (!hydrated || !session)
     return (
-      <main className="workspace" role="status">
+      <main className={styles.workspace} role="status">
         Opening your learning workspace…
       </main>
     );

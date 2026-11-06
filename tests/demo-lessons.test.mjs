@@ -5,7 +5,8 @@ import {
   retiredDemoIds,
 } from "../src/lib/demo-lessons.ts";
 import { isLesson } from "../src/lib/lesson-schema.ts";
-import { validateLesson, lessonRepository } from "../src/lib/lessons.ts";
+import { validateLesson } from "../src/lib/lessons.ts";
+import { lessonRepository } from "../src/lib/mock-database.ts";
 
 test("demo fixtures contain one basic draft and one publishable lesson", () => {
   const lessons = createBasicDemoLessons();
