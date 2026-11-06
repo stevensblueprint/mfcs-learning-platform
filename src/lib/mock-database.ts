@@ -1,3 +1,8 @@
+import {
+  addBasicDemoLessons,
+  basicDemoMarker,
+  retiredDemoIds,
+} from "./demo-lessons";
 import type {
   Lesson,
   LessonRepository,
@@ -32,7 +37,17 @@ const empty = (): MockDatabase => ({
 });
 function read(): MockDatabase {
   const raw = localStorage.getItem(key);
-  return raw ? JSON.parse(raw) : empty();
+  let db: MockDatabase = raw ? JSON.parse(raw) : empty();
+  if (
+    process.env.NEXT_PUBLIC_MFCS_DEMO_DATA === "true" &&
+    !localStorage.getItem(basicDemoMarker)
+  ) {
+    for (const id of retiredDemoIds) db = withoutLesson(db, id);
+    addBasicDemoLessons(db);
+    localStorage.setItem(key, JSON.stringify(db));
+    localStorage.setItem(basicDemoMarker, "true");
+  }
+  return db;
 }
 export function hydrate(db: MockDatabase, row: LessonRow): Lesson {
   return {

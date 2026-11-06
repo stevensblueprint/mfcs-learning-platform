@@ -1,0 +1,13 @@
+.error {
+  color: var(--red);
+  font-size: 12px;
+  margin: 2px 0 0;
+  line-height: 1.1;
+}
+@media (max-width: 760px) {
+  .error {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+}

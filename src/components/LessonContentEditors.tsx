@@ -1,4 +1,6 @@
 "use client";
+import ConfirmButton from "./ui/ConfirmButton";
+import EmptyState from "./ui/EmptyState";
 import {
   blankQuestion,
   blankVocabulary,
@@ -39,19 +41,13 @@ function Controls({
       >
         ↓
       </button>
-      <button
+      <ConfirmButton
         className="text-danger"
-        onClick={() => {
-          if (
-            confirm(
-              "Are you sure you want to delete this item? This action cannot be undone.",
-            )
-          )
-            onRemove();
-        }}
+        description="Are you sure you want to delete this item? This action cannot be undone."
+        onConfirm={onRemove}
       >
         Remove
-      </button>
+      </ConfirmButton>
     </div>
   );
 }
@@ -69,9 +65,9 @@ export function VocabularyEditor({
   return (
     <div className="form-stack">
       {!lesson.vocabulary.length && (
-        <div className="inline-empty">
+        <EmptyState compact>
           Add a meaning, then the Chinese expressions that share it.
-        </div>
+        </EmptyState>
       )}
       {lesson.vocabulary.map((v, i) => {
         const editExpression = (id: number, patch: Partial<Expression>) =>
@@ -185,19 +181,19 @@ export function VocabularyEditor({
                     })}
                   </div>
                   {v.expressions.length > 1 && (
-                    <button
+                    <ConfirmButton
                       className="text-danger"
-                      onClick={() => {
-                        if (confirm("Delete this Chinese expression?"))
-                          edit(v.id, {
-                            expressions: v.expressions.filter(
-                              (e) => e.id !== expression.id,
-                            ),
-                          });
-                      }}
+                      description="Delete this Chinese expression?"
+                      onConfirm={() =>
+                        edit(v.id, {
+                          expressions: v.expressions.filter(
+                            (e) => e.id !== expression.id,
+                          ),
+                        })
+                      }
                     >
                       Remove expression
-                    </button>
+                    </ConfirmButton>
                   )}
                 </fieldset>
               ))}
@@ -256,19 +252,19 @@ export function VocabularyEditor({
                         />
                       </label>
                     ))}
-                    <button
+                    <ConfirmButton
                       className="text-danger"
-                      onClick={() => {
-                        if (confirm("Delete this example sentence?"))
-                          edit(v.id, {
-                            examples: v.examples.filter(
-                              (item) => item.id !== example.id,
-                            ),
-                          });
-                      }}
+                      description="Delete this example sentence?"
+                      onConfirm={() =>
+                        edit(v.id, {
+                          examples: v.examples.filter(
+                            (item) => item.id !== example.id,
+                          ),
+                        })
+                      }
                     >
                       Remove example
-                    </button>
+                    </ConfirmButton>
                   </div>
                 </fieldset>
               ))}
@@ -315,9 +311,9 @@ export function QuestionEditor({
   return (
     <div className="form-stack">
       {!lesson.questions.length && (
-        <div className="inline-empty">
+        <EmptyState compact>
           Add recognition, pronunciation, or writing practice.
-        </div>
+        </EmptyState>
       )}
       {lesson.questions.map((q, i) => {
         const edit = (patch: Partial<Question>) =>

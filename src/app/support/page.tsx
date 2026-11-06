@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-  type ChangeEvent,
-  type FormEvent,
-} from "react";
+import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { submitSupportRequest, type SupportRequestData } from "./actions";
-import { supportBodyFont, supportHeadingFont } from "./fonts";
+import FeedbackDialog from "@/components/ui/FeedbackDialog";
+import FieldError from "@/components/ui/FieldError";
 import styles from "./support.module.css";
 
 type Fields = Omit<SupportRequestData, "name"> & {
@@ -31,14 +26,8 @@ export default function SupportPage() {
   const [fields, setFields] = useState<Fields>(INITIAL_FIELDS);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
-  const dialog = useRef<HTMLDialogElement>(null);
   const form = useRef<HTMLFormElement>(null);
   const submitting = useRef(false);
-
-  useEffect(() => {
-    if ((status === "success" || status === "error") && !dialog.current?.open)
-      dialog.current?.showModal();
-  }, [status]);
 
   function handleChange(
     event: ChangeEvent<
@@ -99,14 +88,14 @@ export default function SupportPage() {
   }
   function fieldError(name: keyof Fields) {
     return errors[name] ? (
-      <p id={`${name}-error`} className={styles.fieldError}>
+      <FieldError id={`${name}-error`} className={styles.fieldError}>
         {errors[name]}
-      </p>
+      </FieldError>
     ) : null;
   }
 
   return (
-    <main className={`${styles.page} ${supportBodyFont.className}`}>
+    <main className={styles.page}>
       <div className={styles.scene}>
         <div
           className={`${styles.cloud} ${styles.cloudLeft}`}
@@ -120,9 +109,7 @@ export default function SupportPage() {
           className={`${styles.cloud} ${styles.cloudBottom}`}
           aria-hidden="true"
         />
-        <h1 className={`${styles.title} ${supportHeadingFont.className}`}>
-          Contact Support
-        </h1>
+        <h1 className={styles.title}>Contact Support</h1>
         <form
           ref={form}
           onSubmit={handleSubmit}
@@ -139,7 +126,7 @@ export default function SupportPage() {
               <legend>Name:</legend>
               <div className={styles.nameRow}>
                 <div>
-                  <label className={styles.srOnly} htmlFor="firstName">
+                  <label className="sr-only" htmlFor="firstName">
                     First name
                   </label>
                   <input
@@ -155,7 +142,7 @@ export default function SupportPage() {
                   {fieldError("firstName")}
                 </div>
                 <div>
-                  <label className={styles.srOnly} htmlFor="lastName">
+                  <label className="sr-only" htmlFor="lastName">
                     Last name
                   </label>
                   <input
@@ -241,33 +228,21 @@ export default function SupportPage() {
               {status === "submitting" ? "Sending…" : "Submit Request"}
             </button>
           </div>
-          <span className={styles.srOnly} role="status">
+          <span className="sr-only" role="status">
             {status === "submitting" ? "Sending your support request." : ""}
           </span>
         </form>
       </div>
-      <dialog
-        ref={dialog}
-        className={styles.dialog}
-        aria-labelledby="support-result-title"
-        aria-describedby="support-result-description"
+      <FeedbackDialog
+        open={status === "success" || status === "error"}
         onClose={() => setStatus("idle")}
-      >
-        <h2 id="support-result-title" className={supportHeadingFont.className}>
-          {status === "success" ? "Success!" : "Error!"}
-        </h2>
-        <p id="support-result-description">
-          {status === "success"
+        title={status === "success" ? "Success!" : "Error!"}
+        description={
+          status === "success"
             ? "Your support request has been submitted."
-            : "There was an error submitting your request. Please try again later."}
-        </p>
-        <button
-          className={styles.goldButton}
-          onClick={() => dialog.current?.close()}
-        >
-          Ok
-        </button>
-      </dialog>
+            : "There was an error submitting your request. Please try again later."
+        }
+      />
     </main>
   );
 }

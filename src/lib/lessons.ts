@@ -197,4 +197,3 @@ export interface LessonRepository {
   save(lesson: Lesson): Promise<Lesson>;
   remove(id: number): Promise<void>;
 }
-export { lessonRepository } from "./mock-database";
