@@ -86,8 +86,8 @@ Replace the adapter with authenticated API persistence and derive permitted clas
 the server session before production use.
 
 The Figma file contains home, login, and support concepts, so the lesson interface extends
-those concepts rather than reproducing a supplied lesson editor. Original logo, dragon,
-and cloud assets are downloaded into `public/figma`. The design's Cherry Bomb One and
+those concepts rather than reproducing a supplied lesson editor. Shared brand assets live in `public/brand`; dragon, cloud, and other artwork lives
+in `public/illustrations`, and UI icons live in `public/icons`. The design's Cherry Bomb One and
 Inclusive Sans fonts are loaded via Next.js font optimization.
 
 Run the persistence and validation tests with Node 22+:
@@ -141,3 +141,24 @@ Seeding runs once per browser. It replaces the five earlier large demo lessons a
 their dependent mock rows, while preserving lessons you created yourself. Edits and deletions
 to the new samples persist. Set the flag to `false` to disable future seeding; existing browser
 data remains. The sample data does not require PostgreSQL.
+
+## Repository organization
+
+- Keep App Router entry points named `page.tsx`; folders define the URL. Named
+  React components can sit behind those entry points when there is a useful boundary.
+- `src/app/globals.css` owns the shared palette, typography defaults, radius tokens,
+  resets, and accessibility utilities. Use those variables in feature styles.
+- Colocate custom styles with their owner: `BrandLogo.module.css` beside
+  `BrandLogo.tsx`, or `login.module.css` beside the login page. Lesson styling is
+  scoped by `LessonWorkspace.module.css` to the workspace and its nested editors.
+- `src/components/ui` owns reusable dialogs, confirmations, alerts, field errors,
+  and empty states. Use `FeedbackDialog` for result messages, `ConfirmButton` for
+  destructive actions, and `Dialog` for custom modal content. Native dialog behavior
+  handles focus containment and Escape; confirmations disable actions while pending.
+- `src/components/auth` owns the shared login/recovery shell and its styles.
+  Pages keep their own form state, validation, and navigation behavior.
+- Organize `public` by purpose: `brand`, `icons`, and `illustrations` (clouds,
+  dragons, bubbles, and mail). Keep distinct artwork variants; reuse identical assets.
+- `src/lib/lessons.ts` owns lesson types, factories, and validation. Import the mock
+  `lessonRepository` directly from `src/lib/mock-database.ts` where persistence is
+  needed; domain code must not import a storage adapter.
