@@ -12,7 +12,7 @@ export default function Home() {
       <div className={styles.canvas}>
         <div className={styles.village} aria-hidden="true">
           <Image
-            src="/home/village.png"
+            src="/illustrations/village.png"
             alt=""
             width={1672}
             height={941}
@@ -41,7 +41,7 @@ export default function Home() {
           <span>Log In</span>
         </Link>
         <Image
-          src="/home/dragon.png"
+          src="/illustrations/dragons/welcome.png"
           alt="A cheerful Chinese dragon welcomes you to MFCS"
           width={1448}
           height={1086}
@@ -50,7 +50,7 @@ export default function Home() {
         />
         <div className={styles.foregroundCloud} aria-hidden="true">
           <Image
-            src="/home/foreground-cloud.png"
+            src="/illustrations/clouds/foreground.png"
             alt=""
             width={1448}
             height={1086}

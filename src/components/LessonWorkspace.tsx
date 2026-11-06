@@ -165,7 +165,7 @@ export default function LessonWorkspace() {
         <Image
           className="heading-dragon"
           loading="eager"
-          src="/figma/dragon.png"
+          src="/illustrations/dragons/mascot.png"
           alt="Friendly Chinese dragon mascot"
           width={116}
           height={136}
@@ -312,7 +312,7 @@ export default function LessonWorkspace() {
               {!visibleLessons.length && (
                 <div className="empty-state">
                   <Image
-                    src="/figma/cloud.svg"
+                    src="/illustrations/clouds/left.svg"
                     loading="eager"
                     width={180}
                     height={119}

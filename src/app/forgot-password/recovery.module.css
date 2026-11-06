@@ -51,7 +51,7 @@
 .backArrow {
   width: 17px;
   height: 15.8284px;
-  background: url("/password-recovery/back-arrow.svg") center / contain
+  background: url("/icons/back-arrow.svg") center / contain
     no-repeat;
 }
 .cloudRight::after {
@@ -61,7 +61,7 @@
   left: 21%;
   width: 37%;
   aspect-ratio: 173 / 94;
-  background: url("/password-recovery/cloud-cap.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/recovery-cap.svg") center / contain no-repeat;
 }
 .confirmation {
   display: flex;
@@ -83,7 +83,7 @@
   transform: translate(-50%, -50%);
   width: calc(211 * var(--unit));
   height: calc(211 * var(--unit));
-  background: url("/password-recovery/envelope.svg") center / contain no-repeat;
+  background: url("/illustrations/mail/envelope.svg") center / contain no-repeat;
 }
 .ray {
   position: absolute;
@@ -98,38 +98,38 @@
   left: calc(20 * var(--unit));
   top: calc(75 * var(--unit));
   transform: rotate(29.36deg);
-  background-image: url("/password-recovery/ray-upper-left.svg");
+  background-image: url("/illustrations/mail/ray-upper-left.svg");
 }
 .rayUpperRight {
   width: calc(55.0727 * var(--unit));
   right: calc(20 * var(--unit));
   top: calc(75 * var(--unit));
   transform: rotate(-29.36deg);
-  background-image: url("/password-recovery/ray-upper-left.svg");
+  background-image: url("/illustrations/mail/ray-upper-left.svg");
 }
 .rayLeft {
   left: 0;
   top: calc(139 * var(--unit));
-  background-image: url("/password-recovery/ray-left.svg");
+  background-image: url("/illustrations/mail/ray-left.svg");
 }
 .rayLowerLeft {
   width: calc(47.3814 * var(--unit));
   left: calc(27 * var(--unit));
   top: calc(206 * var(--unit));
   transform: rotate(-45.86deg);
-  background-image: url("/password-recovery/ray-lower-left.svg");
+  background-image: url("/illustrations/mail/ray-lower-left.svg");
 }
 .rayRight {
   right: calc(10 * var(--unit));
   top: calc(139 * var(--unit));
-  background-image: url("/password-recovery/ray-right.svg");
+  background-image: url("/illustrations/mail/ray-right.svg");
 }
 .rayLowerRight {
   width: calc(47.38 * var(--unit));
   right: calc(28 * var(--unit));
   top: calc(206 * var(--unit));
   transform: rotate(38.66deg);
-  background-image: url("/password-recovery/ray-lower-right.svg");
+  background-image: url("/illustrations/mail/ray-lower-right.svg");
 }
 .sentMessage {
   margin: calc(24 * var(--unit)) auto 0;

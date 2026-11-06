@@ -70,7 +70,7 @@ export default function LoginPage() {
           aria-hidden="true"
         />
         <Image
-          src="/figma/dragon.png"
+          src="/illustrations/dragons/mascot.png"
           alt=""
           aria-hidden="true"
           width={263}

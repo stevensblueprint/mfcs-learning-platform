@@ -51,7 +51,7 @@ export default function ForgotPasswordPage() {
         />
         {!sentTo && (
           <Image
-            src="/figma/dragon.png"
+            src="/illustrations/dragons/mascot.png"
             alt=""
             aria-hidden="true"
             width={263}

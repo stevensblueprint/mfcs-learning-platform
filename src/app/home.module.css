@@ -42,7 +42,7 @@
   container-type: inline-size;
   width: min(42.2%, calc((100svh - 84px) * 638 / 616));
   aspect-ratio: 638 / 616;
-  background: url("/home/title-bubble.svg") center / contain no-repeat;
+  background: url("/illustrations/bubbles/title.svg") center / contain no-repeat;
 }
 .heading {
   position: absolute;
@@ -94,7 +94,7 @@
   top: 11.86%;
   width: calc(456 * var(--u));
   aspect-ratio: 456 / 247;
-  background: url("/home/cloud-large.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/large.svg") center / contain no-repeat;
   pointer-events: none;
 }
 .largeCloudCap {
@@ -103,7 +103,7 @@
   bottom: 0;
   width: 51.1%;
   aspect-ratio: 233 / 110;
-  background: url("/home/cloud-large-cap.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/large-cap.svg") center / contain no-repeat;
 }
 .upperCloud,
 .rightCloud {
@@ -111,7 +111,7 @@
   z-index: 4;
   width: calc(198 * var(--u));
   aspect-ratio: 198 / 130;
-  background: url("/home/cloud-small.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/small.svg") center / contain no-repeat;
   pointer-events: none;
 }
 .upperCloud {
@@ -124,7 +124,7 @@
   bottom: 0;
   width: 46.5%;
   aspect-ratio: 92 / 49;
-  background: url("/home/cloud-small-cap.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/small-cap.svg") center / contain no-repeat;
 }
 .rightCloud {
   right: calc(12 * var(--u));
@@ -138,7 +138,7 @@
   width: min(29.7%, calc((100svh - 84px) * 0.55));
   container-type: inline-size;
   aspect-ratio: 449 / 419;
-  background: url("/home/login-bubble.svg") center / contain no-repeat;
+  background: url("/illustrations/bubbles/login.svg") center / contain no-repeat;
   color: white;
   text-decoration: none;
 }

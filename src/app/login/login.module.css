@@ -62,7 +62,7 @@
   height: 18px;
   flex: 0 0 18px;
   margin-top: 3px;
-  background: url("/login/error-circle.svg") center / contain no-repeat;
+  background: url("/icons/error-circle.svg") center / contain no-repeat;
 }
 .errorTitle {
   margin: 0;
@@ -174,21 +174,21 @@
   /* Match the support page's left cloud sizing and artwork. */
   width: min(19vw, 300px);
   aspect-ratio: 343 / 223;
-  background-image: url("/support/cloud-left.svg");
+  background-image: url("/illustrations/clouds/left.svg");
 }
 .cloudRight {
   right: clamp(16px, 2.2vw, 36px);
   top: 15%;
   width: min(24vw, 360px);
   aspect-ratio: 456 / 247;
-  background-image: url("/login/cloud-right.svg");
+  background-image: url("/illustrations/clouds/right.svg");
 }
 .cloudBottom {
   left: clamp(16px, 2.8vw, 44px);
   bottom: 24px;
   width: min(21vw, 300px);
   aspect-ratio: 380 / 272;
-  background-image: url("/support/cloud-bottom.svg");
+  background-image: url("/illustrations/clouds/bottom.svg");
 }
 .dragon {
   position: absolute;
