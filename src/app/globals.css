@@ -7,9 +7,19 @@
   --coral: #fa897f;
   --muted: #68717d;
   --border: #eadfd2;
+  --feedback-border: #f28c80;
+  --error-border: #ff3035;
+  --error-text: #e92e2e;
+  --text-subtle: #797474;
+  --control-border: #e0d5c9;
+  --gold-hover: #f4bb3c;
+  --radius-control: 14px;
+  --radius-panel: 22px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 body {
@@ -18,6 +28,7 @@ body {
   color: var(--navy);
   font-family: var(--font-body), Arial, sans-serif;
 }
+
 :where(.workspace) button,
 :where(.workspace) input,
 :where(.workspace) textarea,
@@ -805,4 +816,17 @@ body {
 :where(.landing-page, .destination-page) a:focus-visible {
   outline: 3px solid currentColor;
   outline-offset: 4px;
+}
+
+/* Shared accessibility utility; feature layouts belong in colocated modules. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

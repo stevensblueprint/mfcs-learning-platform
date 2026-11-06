@@ -1,0 +1,26 @@
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: #fffaf3;
+  border: 1px dashed #d9baa0;
+  border-radius: var(--radius-panel);
+  padding: 42px 20px;
+}
+.empty img {
+  margin: 0 auto 15px;
+  object-fit: contain;
+}
+.description {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.compact {
+  padding: 40px 24px;
+  background: var(--cream);
+  border: 0;
+  border-radius: 12px;
+}
+.compact .description {
+  margin: 0;
+}

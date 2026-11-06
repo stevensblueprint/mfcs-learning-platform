@@ -103,7 +103,8 @@
   bottom: 0;
   width: 51.1%;
   aspect-ratio: 233 / 110;
-  background: url("/illustrations/clouds/large-cap.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/large-cap.svg") center / contain
+    no-repeat;
 }
 .upperCloud,
 .rightCloud {
@@ -124,7 +125,8 @@
   bottom: 0;
   width: 46.5%;
   aspect-ratio: 92 / 49;
-  background: url("/illustrations/clouds/small-cap.svg") center / contain no-repeat;
+  background: url("/illustrations/clouds/small-cap.svg") center / contain
+    no-repeat;
 }
 .rightCloud {
   right: calc(12 * var(--u));
