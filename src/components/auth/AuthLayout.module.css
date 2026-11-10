@@ -1,0 +1,204 @@
+.page {
+  --unit: min(1px, calc(100vw / 1512), calc((100svh - 132px) / 820));
+  flex: 1;
+  background: var(--cream);
+  color: #000;
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: max(16px, calc(24 * var(--unit)));
+}
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 1512px;
+  min-height: calc(100svh - 84px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(24px, 4svh, 40px) 24px 24px;
+}
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-heading), sans-serif;
+  font-size: calc(100 * var(--unit));
+  font-weight: 400;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--navy);
+}
+.subtitle {
+  margin: calc(14 * var(--unit)) 0 0;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--navy);
+}
+.form {
+  width: calc(595 * var(--unit));
+  margin: calc(48 * var(--unit)) auto 0;
+}
+.fields {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(48 * var(--unit));
+}
+.field label {
+  display: block;
+  margin: 0 0 calc(20 * var(--unit));
+  line-height: 1.2;
+}
+.field input {
+  display: block;
+  width: 100%;
+  height: max(44px, calc(66 * var(--unit)));
+  margin: 0;
+  border: 2px solid var(--control-border);
+  border-radius: 14px;
+  padding: 12px 16px;
+  background: white;
+  color: #000;
+  font: inherit;
+  line-height: 1.3;
+}
+.field input::placeholder {
+  color: var(--text-subtle);
+  opacity: 1;
+}
+.field input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 1px var(--red);
+  outline: none;
+}
+.actionButton:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 4px;
+}
+.actionButton {
+  width: 100%;
+  min-height: max(44px, calc(66 * var(--unit)));
+  margin-top: calc(30 * var(--unit));
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--gold);
+  color: #630c03;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.actionButton:hover {
+  background: var(--gold-hover);
+}
+.fields:disabled .actionButton {
+  opacity: 0.65;
+  cursor: default;
+}
+.cloud {
+  position: absolute;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.cloudLeft {
+  left: clamp(16px, 2.2vw, 36px);
+  top: 8%;
+  /* Match the support page's left cloud sizing and artwork. */
+  width: min(19vw, 300px);
+  aspect-ratio: 343 / 223;
+  background-image: url("/illustrations/clouds/left.svg");
+}
+.cloudRight {
+  right: clamp(16px, 2.2vw, 36px);
+  top: 15%;
+  width: min(24vw, 360px);
+  aspect-ratio: 456 / 247;
+  background-image: url("/illustrations/clouds/right.svg");
+}
+.cloudBottom {
+  left: clamp(16px, 2.8vw, 44px);
+  bottom: 24px;
+  width: min(21vw, 300px);
+  aspect-ratio: 380 / 272;
+  background-image: url("/illustrations/clouds/bottom.svg");
+}
+.dragon {
+  position: absolute;
+  right: clamp(20px, 3vw, 48px);
+  bottom: 24px;
+  width: min(17.4vw, 263px);
+  height: auto;
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  .page {
+    --unit: 0.72px;
+    font-size: 16px;
+  }
+  .scene {
+    min-height: calc(100svh - 76px);
+    padding: 32px 20px 210px;
+    justify-content: flex-start;
+  }
+  .title {
+    font-size: clamp(38px, 8.4vw, 64px);
+    line-height: 1.15;
+  }
+  .subtitle {
+    margin-top: 12px;
+  }
+  .form {
+    width: min(100%, 480px);
+  }
+  .fields {
+    gap: 28px;
+  }
+  .field label {
+    margin-bottom: 12px;
+  }
+  .field input {
+    height: 50px;
+    border-radius: 12px;
+  }
+  .actionButton {
+    min-height: 48px;
+    margin-top: 8px;
+    border-radius: 12px;
+  }
+  .cloudLeft {
+    width: 80px;
+    top: auto;
+    bottom: 120px;
+    left: 16px;
+  }
+  .cloudRight {
+    width: 104px;
+    top: auto;
+    bottom: 80px;
+    left: 38%;
+    right: auto;
+  }
+  .cloudBottom {
+    width: 90px;
+    bottom: 16px;
+    left: 16px;
+  }
+  .dragon {
+    width: 116px;
+    right: 20px;
+    bottom: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .actionButton {
+    transition: none;
+  }
+}

@@ -12,11 +12,11 @@ export interface Session {
 
 const SESSION_KEY = "mfcs-mock-session";
 
-const DEMO_USERS: (Session & { password: string })[] = [
-  { name: "Sam Student", email: "student@mfcs.test", password: "password123", role: "student" },
-  { name: "Tina Teacher", email: "teacher@mfcs.test", password: "password123", role: "teacher" },
-  { name: "Alex Admin", email: "admin@mfcs.test", password: "password123", role: "admin" },
-];
+const DEMO_ADMIN: Session = {
+  name: "Admin",
+  email: "admin@mfcs.test",
+  role: "admin",
+};
 
 // Lets React components re-render when the session changes in this tab.
 const listeners = new Set<() => void>();
@@ -36,24 +36,38 @@ export function subscribeToSession(callback: () => void): () => void {
 
 // Returns the raw string (not a parsed object) so React sees a stable value.
 export function getSessionSnapshot(): string | null {
-  return localStorage.getItem(SESSION_KEY);
-}
-
-export function parseSession(raw: string | null): Session | null {
   try {
-    return raw ? (JSON.parse(raw) as Session) : null;
+    return localStorage.getItem(SESSION_KEY);
   } catch {
     return null;
   }
 }
 
-export function login(email: string, password: string): Session | null {
-  const user = DEMO_USERS.find(
-    (u) => u.email === email.trim().toLowerCase() && u.password === password
-  );
-  if (!user) return null;
+export function parseSession(raw: string | null): Session | null {
+  try {
+    if (!raw) return null;
+    const value = JSON.parse(raw);
+    if (
+      !value ||
+      typeof value.name !== "string" ||
+      typeof value.email !== "string" ||
+      !["student", "teacher", "admin"].includes(value.role)
+    )
+      return null;
+    return {
+      name: value.name,
+      email: value.email,
+      role: value.role,
+    } as Session;
+  } catch {
+    return null;
+  }
+}
 
-  const session: Session = { name: user.name, email: user.email, role: user.role };
+export function login(username: string, password: string): Session | null {
+  if (username !== "admin" || password !== "admin") return null;
+
+  const session: Session = { ...DEMO_ADMIN };
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   notify();
   return session;
@@ -66,4 +80,14 @@ export function logout(): void {
 
 export function getSession(): Session | null {
   return parseSession(getSessionSnapshot());
+}
+
+// Mock recovery only: no email is sent and no password is changed.
+export function requestPasswordReset(
+  identifier: string,
+): { email: string } | null {
+  const value = identifier.trim();
+  if (value !== "admin" && value.toLowerCase() !== DEMO_ADMIN.email)
+    return null;
+  return { email: DEMO_ADMIN.email };
 }

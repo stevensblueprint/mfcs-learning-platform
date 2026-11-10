@@ -1,0 +1,203 @@
+.scene {
+  padding-top: clamp(32px, 5svh, 56px);
+}
+.title {
+  font-size: min(6.6vw, calc(100 * var(--unit)));
+}
+.title:focus {
+  outline: none;
+}
+.intro {
+  max-width: calc(773 * var(--unit));
+  margin: calc(44 * var(--unit)) auto 0;
+  text-align: center;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.form {
+  margin-top: calc(60 * var(--unit));
+}
+.label {
+  font-weight: 700;
+  color: var(--navy);
+}
+.form .sendButton {
+  margin-top: 0;
+}
+.backLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: fit-content;
+  margin: calc(36 * var(--unit)) auto 0;
+  padding: 8px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+.backLink:hover {
+  text-decoration: underline;
+}
+.backLink:focus-visible,
+.backButton:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.backArrow {
+  width: 17px;
+  height: 15.8284px;
+  background: url("/icons/back-arrow.svg") center / contain no-repeat;
+}
+.cloudRight::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 21%;
+  width: 37%;
+  aspect-ratio: 173 / 94;
+  background: url("/illustrations/clouds/recovery-cap.svg") center / contain
+    no-repeat;
+}
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--navy);
+}
+.mailIllustration {
+  position: relative;
+  width: calc(430 * var(--unit));
+  height: calc(242 * var(--unit));
+  margin: calc(24 * var(--unit)) auto 0;
+}
+.envelope {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(211 * var(--unit));
+  height: calc(211 * var(--unit));
+  background: url("/illustrations/mail/envelope.svg") center / contain no-repeat;
+}
+.ray {
+  position: absolute;
+  width: calc(50 * var(--unit));
+  height: calc(10 * var(--unit));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.rayUpperLeft {
+  width: calc(55.0727 * var(--unit));
+  left: calc(20 * var(--unit));
+  top: calc(75 * var(--unit));
+  transform: rotate(29.36deg);
+  background-image: url("/illustrations/mail/ray-upper-left.svg");
+}
+.rayUpperRight {
+  width: calc(55.0727 * var(--unit));
+  right: calc(20 * var(--unit));
+  top: calc(75 * var(--unit));
+  transform: rotate(-29.36deg);
+  background-image: url("/illustrations/mail/ray-upper-left.svg");
+}
+.rayLeft {
+  left: 0;
+  top: calc(139 * var(--unit));
+  background-image: url("/illustrations/mail/ray-left.svg");
+}
+.rayLowerLeft {
+  width: calc(47.3814 * var(--unit));
+  left: calc(27 * var(--unit));
+  top: calc(206 * var(--unit));
+  transform: rotate(-45.86deg);
+  background-image: url("/illustrations/mail/ray-lower-left.svg");
+}
+.rayRight {
+  right: calc(10 * var(--unit));
+  top: calc(139 * var(--unit));
+  background-image: url("/illustrations/mail/ray-right.svg");
+}
+.rayLowerRight {
+  width: calc(47.38 * var(--unit));
+  right: calc(28 * var(--unit));
+  top: calc(206 * var(--unit));
+  transform: rotate(38.66deg);
+  background-image: url("/illustrations/mail/ray-lower-right.svg");
+}
+.sentMessage {
+  margin: calc(24 * var(--unit)) auto 0;
+  font-size: max(20px, calc(32 * var(--unit)));
+  line-height: 1.35;
+}
+.sentMessage strong {
+  display: block;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.instructions {
+  width: calc(646 * var(--unit));
+  max-width: 100%;
+  margin: calc(24 * var(--unit)) auto 0;
+  font-size: max(14px, calc(20 * var(--unit)));
+  line-height: 1.4;
+}
+.confirmation .backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, calc(595 * var(--unit)));
+  flex-shrink: 0;
+  margin: calc(32 * var(--unit)) auto 0;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--navy);
+}
+@media (max-width: 760px) {
+  .scene {
+    padding-top: 32px;
+  }
+  .title {
+    font-size: clamp(32px, 7.5vw, 54px);
+  }
+  .intro {
+    max-width: 480px;
+    margin-top: 26px;
+    font-size: 16px;
+  }
+  .form {
+    margin-top: 32px;
+  }
+  .backLink {
+    margin-top: 24px;
+  }
+  .mailIllustration {
+    width: min(100%, 310px);
+    margin-top: 24px;
+  }
+  .sentMessage {
+    font-size: 22px;
+    margin-top: 24px;
+  }
+  .instructions {
+    width: min(100%, 420px);
+    margin-top: 20px;
+    font-size: 15px;
+  }
+  .confirmation .backButton {
+    margin-top: 24px;
+  }
+}
+
+@media (min-width: 761px) {
+  .scene.centeredScene {
+    justify-content: center;
+    padding-block: 24px;
+  }
+}

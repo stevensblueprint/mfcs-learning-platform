@@ -1,12 +1,17 @@
 "use client";
+import { lessonRepository } from "@/lib/mock-database";
 import Image from "next/image";
+import Alert from "./ui/Alert";
+import Dialog from "./ui/Dialog";
+import ConfirmButton from "./ui/ConfirmButton";
+import EmptyState from "./ui/EmptyState";
+import styles from "./LessonWorkspace.module.css";
 import { VocabularyEditor, QuestionEditor } from "./LessonContentEditors";
 import { selectLessons, type LessonSort } from "@/lib/lesson-display";
 import { useEffect, useRef, useState } from "react";
 import {
   blankLesson,
   classes,
-  lessonRepository,
   validateLesson,
   orderedLesson,
   type Lesson,
@@ -151,15 +156,7 @@ export default function LessonWorkspace() {
     sort,
   });
   return (
-    <main className="workspace">
-      <div className="breadcrumb">
-        Teacher workspace <span>/</span> My lessons{" "}
-        {lesson && (
-          <>
-            <span>/</span> {lesson.title || "New lesson"}
-          </>
-        )}
-      </div>
+    <main className={styles.workspace}>
       <section className="page-heading">
         <div>
           <p className="eyebrow">A LITTLE PREPARATION. A WORLD OF DISCOVERY.</p>
@@ -173,23 +170,13 @@ export default function LessonWorkspace() {
         <Image
           className="heading-dragon"
           loading="eager"
-          src="/figma/dragon.png"
+          src="/illustrations/dragons/mascot.png"
           alt="Friendly Chinese dragon mascot"
           width={116}
           height={136}
         />
       </section>
-      <div className="demo-note">
-        Demo workspace · Lessons are saved in this browser. Class access uses a
-        mock teacher account.
-      </div>
-      {errors.length > 0 && (
-        <div role="alert" className="error-box">
-          {errors.map((error) => (
-            <p key={error}>{error}</p>
-          ))}
-        </div>
-      )}
+      {errors.length > 0 && <Alert messages={errors} />}
       {!lesson ? (
         <>
           <div className="library-toolbar">
@@ -297,52 +284,52 @@ export default function LessonWorkspace() {
                   </p>
                   <footer>
                     <button onClick={() => open(l)}>Edit lesson →</button>
-                    <button
+                    <ConfirmButton
                       className="text-danger"
-                      onClick={async () => {
-                        if (
-                          confirm(`Delete “${l.title || "Untitled lesson"}”?`)
-                        ) {
-                          try {
-                            await lessonRepository.remove(l.id);
-                            setLessons((all) =>
-                              all.filter((item) => item.id !== l.id),
-                            );
-                          } catch {
-                            setErrors([
-                              "Could not delete lesson. Please try again.",
-                            ]);
-                          }
+                      description={`Delete “${l.title || "Untitled lesson"}”?`}
+                      onConfirm={async () => {
+                        try {
+                          await lessonRepository.remove(l.id);
+                          setLessons((all) =>
+                            all.filter((item) => item.id !== l.id),
+                          );
+                        } catch {
+                          setErrors([
+                            "Could not delete lesson. Please try again.",
+                          ]);
                         }
                       }}
                     >
                       Delete
-                    </button>
+                    </ConfirmButton>
                   </footer>
                 </article>
               ))}
               {!visibleLessons.length && (
-                <div className="empty-state">
-                  <Image
-                    src="/figma/cloud.svg"
-                    loading="eager"
-                    width={180}
-                    height={119}
-                    style={{ height: "auto" }}
-                    alt=""
-                  />
-                  <h2>
-                    {search ? "No lessons found" : "Room for a new adventure"}
-                  </h2>
-                  <p>
-                    {search
-                      ? "Try another title or filter."
-                      : "Your lessons will live here. Let’s make the first one together."}
-                  </p>
-                  <button className="primary" onClick={create}>
-                    ＋ Create a lesson
-                  </button>
-                </div>
+                <EmptyState
+                  title={
+                    search ? "No lessons found" : "Room for a new adventure"
+                  }
+                  illustration={
+                    <Image
+                      src="/illustrations/clouds/left.svg"
+                      loading="eager"
+                      width={180}
+                      height={119}
+                      style={{ height: "auto" }}
+                      alt=""
+                    />
+                  }
+                  action={
+                    <button className="primary" onClick={create}>
+                      ＋ Create a lesson
+                    </button>
+                  }
+                >
+                  {search
+                    ? "Try another title or filter."
+                    : "Your lessons will live here. Let’s make the first one together."}
+                </EmptyState>
               )}
             </div>
           )}
@@ -355,30 +342,24 @@ export default function LessonWorkspace() {
               {saving ? "Saving…" : message}
             </span>
             <button onClick={() => setPreview(true)}>Preview lesson</button>
-            <button
+            <ConfirmButton
               className="text-danger"
-              onClick={async () => {
-                if (
-                  confirm(
-                    `Delete “${lesson.title || "Untitled lesson"}”? This action cannot be undone.`,
-                  )
-                ) {
-                  if (autosaveTimer.current)
-                    clearTimeout(autosaveTimer.current);
-                  await queue.current;
-                  try {
-                    await lessonRepository.remove(lesson.id);
-                    setLessons((all) => all.filter((l) => l.id !== lesson.id));
-                    setLesson(null);
-                    latest.current = null;
-                  } catch {
-                    setErrors(["Could not delete lesson. Please try again."]);
-                  }
+              description={`Delete “${lesson.title || "Untitled lesson"}”? This action cannot be undone.`}
+              onConfirm={async () => {
+                if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
+                await queue.current;
+                try {
+                  await lessonRepository.remove(lesson.id);
+                  setLessons((all) => all.filter((l) => l.id !== lesson.id));
+                  setLesson(null);
+                  latest.current = null;
+                } catch {
+                  setErrors(["Could not delete lesson. Please try again."]);
                 }
               }}
             >
               Delete lesson
-            </button>
+            </ConfirmButton>
             <button disabled={saving} onClick={() => void close()}>
               {lesson.status === "PUBLISHED" ? "Save changes" : "Save draft"}
             </button>
@@ -546,7 +527,12 @@ export default function LessonWorkspace() {
         </>
       )}
       {preview && lesson && (
-        <dialog open className="preview-dialog" aria-labelledby="preview-title">
+        <Dialog
+          open={preview}
+          onClose={() => setPreview(false)}
+          variant="content"
+          labelledBy="preview-title"
+        >
           <div className="preview-content">
             <button
               className="close-preview"
@@ -634,7 +620,7 @@ export default function LessonWorkspace() {
               Back to editing
             </button>
           </div>
-        </dialog>
+        </Dialog>
       )}
     </main>
   );

@@ -1,0 +1,140 @@
+.dialog {
+  --unit: min(1px, calc(100vw / 1512));
+  box-sizing: border-box;
+  position: fixed;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: calc(722 * var(--unit));
+  min-height: calc(451 * var(--unit));
+  max-width: calc(100vw - 32px);
+  max-height: calc(100svh - 32px);
+  overflow: auto;
+  border: calc(5 * var(--unit)) solid var(--feedback-border);
+  border-radius: calc(16 * var(--unit));
+  background: white;
+  color: #000;
+  padding: calc(64 * var(--unit)) calc(70 * var(--unit)) calc(93 * var(--unit));
+  text-align: center;
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: calc(24 * var(--unit));
+}
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.39);
+}
+.dialog.feedback h2 {
+  color: var(--navy);
+  font-family: var(--font-heading), sans-serif;
+  font-size: calc(80 * var(--unit));
+  min-height: calc(108 * var(--unit));
+  line-height: 1;
+  font-weight: 400;
+  margin: 0;
+}
+.dialog.feedback > p {
+  width: calc(442 * var(--unit));
+  max-width: 100%;
+  min-height: calc(78 * var(--unit));
+  margin: calc(6 * var(--unit)) auto calc(33 * var(--unit));
+  line-height: 1.2;
+  color: inherit;
+  font-size: inherit;
+}
+.feedback .action {
+  min-width: calc(157 * var(--unit));
+}
+
+.dialog .action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: max(40px, calc(49 * var(--unit)));
+  padding: calc(10 * var(--unit)) calc(20 * var(--unit));
+  background: var(--gold);
+  border: 0;
+  border-radius: calc(16 * var(--unit));
+  color: #630c03;
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.dialog .action:hover {
+  background: var(--gold-hover);
+}
+.dialog .action:disabled,
+.dialog .secondary:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.dialog .action:focus-visible,
+.dialog .secondary:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 4px;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.dialog .secondary {
+  font: inherit;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: white;
+  color: var(--navy);
+  cursor: pointer;
+}
+.content {
+  inset: 0;
+  transform: none;
+  margin: auto;
+  width: min(760px, calc(100vw - 32px));
+  min-height: 0;
+  height: fit-content;
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  background: var(--cream);
+  color: var(--navy);
+  text-align: left;
+  font-size: 16px;
+}
+.content::backdrop {
+  background: #01234b99;
+}
+@media (max-width: 760px) {
+  .feedback {
+    --unit: 0.72px;
+    font-size: 16px;
+    width: min(92vw, 520px);
+    min-height: 300px;
+    padding: 36px 24px;
+    border-width: 3px;
+  }
+  .dialog.feedback h2 {
+    height: auto;
+    font-size: 52px;
+  }
+  .dialog.feedback > p {
+    width: 100%;
+    min-height: 58px;
+    margin: 14px auto 24px;
+    line-height: 1.5;
+  }
+  .dialog .action {
+    min-height: 44px;
+    border-radius: 12px;
+    padding: 10px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog .action {
+    transition: none;
+  }
+}

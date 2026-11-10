@@ -1,4 +1,4 @@
-import LessonWorkspace from "@/components/LessonWorkspace";
+import LessonDashboard from "@/components/LessonDashboard";
 export default function Lessons() {
-  return <LessonWorkspace />;
+  return <LessonDashboard />;
 }
