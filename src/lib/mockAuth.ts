@@ -13,9 +13,24 @@ export interface Session {
 const SESSION_KEY = "mfcs-mock-session";
 
 const DEMO_USERS: (Session & { password: string })[] = [
-  { name: "Sam Student", email: "student@mfcs.test", password: "password123", role: "student" },
-  { name: "Tina Teacher", email: "teacher@mfcs.test", password: "password123", role: "teacher" },
-  { name: "Alex Admin", email: "admin@mfcs.test", password: "password123", role: "admin" },
+  {
+    name: "Sam Student",
+    email: "student@mfcs.test",
+    password: "password123",
+    role: "student",
+  },
+  {
+    name: "Tina Teacher",
+    email: "teacher@mfcs.test",
+    password: "password123",
+    role: "teacher",
+  },
+  {
+    name: "Alex Admin",
+    email: "admin@mfcs.test",
+    password: "password123",
+    role: "admin",
+  },
 ];
 
 // Lets React components re-render when the session changes in this tab.
@@ -66,11 +81,15 @@ export function parseSession(raw: string | null): Session | null {
 
 export function login(email: string, password: string): Session | null {
   const user = DEMO_USERS.find(
-    (u) => u.email === email.trim().toLowerCase() && u.password === password
+    (u) => u.email === email.trim().toLowerCase() && u.password === password,
   );
   if (!user) return null;
 
-  const session: Session = { name: user.name, email: user.email, role: user.role };
+  const session: Session = {
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  };
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   notify();
   return session;
@@ -83,4 +102,18 @@ export function logout(): void {
 
 export function getSession(): Session | null {
   return parseSession(getSessionSnapshot());
+}
+
+export function requestPasswordReset(
+  identifier: string,
+): { email: string } | null {
+  const query = identifier.trim().toLowerCase();
+  const user = DEMO_USERS.find(
+    (u) =>
+      u.email.toLowerCase() === query ||
+      u.name.toLowerCase() === query ||
+      u.email.split("@")[0].toLowerCase() === query,
+  );
+  if (!user) return null;
+  return { email: user.email };
 }
