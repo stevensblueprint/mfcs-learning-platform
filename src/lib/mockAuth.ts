@@ -13,24 +13,9 @@ export interface Session {
 const SESSION_KEY = "mfcs-mock-session";
 
 const DEMO_USERS: (Session & { password: string })[] = [
-  {
-    name: "Sam Student",
-    email: "student@mfcs.test",
-    password: "password123",
-    role: "student",
-  },
-  {
-    name: "Tina Teacher",
-    email: "teacher@mfcs.test",
-    password: "password123",
-    role: "teacher",
-  },
-  {
-    name: "Alex Admin",
-    email: "admin@mfcs.test",
-    password: "password123",
-    role: "admin",
-  },
+  { name: "Sam Student", email: "student@mfcs.test", password: "password123", role: "student" },
+  { name: "Tina Teacher", email: "teacher@mfcs.test", password: "password123", role: "teacher" },
+  { name: "Alex Admin", email: "admin@mfcs.test", password: "password123", role: "admin" },
 ];
 
 // Lets React components re-render when the session changes in this tab.
@@ -51,12 +36,29 @@ export function subscribeToSession(callback: () => void): () => void {
 
 // Returns the raw string (not a parsed object) so React sees a stable value.
 export function getSessionSnapshot(): string | null {
-  return localStorage.getItem(SESSION_KEY);
+  try {
+    return localStorage.getItem(SESSION_KEY);
+  } catch {
+    return null;
+  }
 }
 
 export function parseSession(raw: string | null): Session | null {
   try {
-    return raw ? (JSON.parse(raw) as Session) : null;
+    if (!raw) return null;
+    const value = JSON.parse(raw);
+    if (
+      !value ||
+      typeof value.name !== "string" ||
+      typeof value.email !== "string" ||
+      !["student", "teacher", "admin"].includes(value.role)
+    )
+      return null;
+    return {
+      name: value.name,
+      email: value.email,
+      role: value.role,
+    } as Session;
   } catch {
     return null;
   }
@@ -64,15 +66,11 @@ export function parseSession(raw: string | null): Session | null {
 
 export function login(email: string, password: string): Session | null {
   const user = DEMO_USERS.find(
-    (u) => u.email === email.trim().toLowerCase() && u.password === password,
+    (u) => u.email === email.trim().toLowerCase() && u.password === password
   );
   if (!user) return null;
 
-  const session: Session = {
-    name: user.name,
-    email: user.email,
-    role: user.role,
-  };
+  const session: Session = { name: user.name, email: user.email, role: user.role };
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   notify();
   return session;

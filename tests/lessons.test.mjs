@@ -1,3 +1,4 @@
+import { lessonRepository } from "../src/lib/mock-database.ts";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -5,7 +6,6 @@ import {
   blankVocabulary,
   blankQuestion,
   validateLesson,
-  lessonRepository,
 } from "../src/lib/lessons.ts";
 import { classesFor } from "../src/lib/classes.ts";
 import { isLesson } from "../src/lib/lesson-schema.ts";

@@ -1,0 +1,639 @@
+/* Scoped to the lesson workspace; nested editor classes stay within this root. */
+:where(.workspace) button,
+:where(.workspace) input,
+:where(.workspace) textarea,
+:where(.workspace) select {
+  font: inherit;
+}
+:where(.workspace) button,
+:where(.workspace) a,
+:where(.workspace) input,
+:where(.workspace) textarea,
+:where(.workspace) select {
+  touch-action: manipulation;
+}
+:where(.workspace) button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 17px;
+  background: white;
+  color: var(--navy);
+  font-weight: 600;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+:where(.workspace) button:hover {
+  background: #fff0d6;
+}
+:where(.workspace) button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+:where(.workspace) a {
+  color: inherit;
+  text-decoration: none;
+}
+:where(.workspace) a:hover {
+  text-decoration: underline;
+}
+:where(.workspace) button:focus-visible,
+:where(.workspace) a:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+:where(.workspace) input:focus,
+:where(.workspace) textarea:focus,
+:where(.workspace) select:focus {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+.workspace {
+  width: 100%;
+  margin: 0;
+  padding: 26px clamp(20px, 3vw, 48px) 70px;
+}
+:where(.workspace) :global(.page-heading) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 18px;
+  gap: 16px;
+}
+:where(.workspace) :global(.eyebrow) {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #a45832;
+  margin: 0 0 12px;
+}
+:where(.workspace) h1 {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: 0;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+:where(.workspace) h2 {
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+  margin: 0 0 9px;
+}
+:where(.workspace) h3 {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 25px 0 14px;
+}
+:where(.workspace) p {
+  line-height: 1.6;
+}
+:where(.workspace) :global(.page-heading) p:last-child {
+  color: var(--muted);
+  margin: 0;
+}
+:where(.workspace) :global(.heading-dragon) {
+  object-fit: contain;
+  margin-right: 30px;
+}
+:where(.workspace) :global(.primary) {
+  background: var(--gold);
+  color: #630c03;
+  border-color: var(--gold);
+  box-shadow: 0 2px 0 #c78a13;
+}
+:where(.workspace) :global(.primary):hover {
+  background: #f4bd43;
+}
+:where(.workspace) :global(.library-toolbar),
+:where(.workspace) :global(.editor-toolbar) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 22px 0;
+}
+:where(.workspace) :global(.filters) {
+  display: flex;
+  background: #f0e7db;
+  border-radius: 14px;
+  padding: 4px;
+  gap: 3px;
+}
+:where(.workspace) :global(.filters) button {
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+:where(.workspace) :global(.filters) :global(.selected) {
+  background: white;
+  box-shadow: 0 2px 5px #01234b0a;
+}
+:where(.workspace) :global(.search) {
+  display: block;
+  max-width: 360px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+:where(.workspace) :global(.search) input {
+  margin-top: 8px;
+}
+:where(.workspace) :global(.lesson-grid) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 22px;
+}
+:where(.workspace) :global(.lesson-card) {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 0 #eadfd23b;
+}
+:where(.workspace) :global(.card-top) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+:where(.workspace) :global(.lesson-symbol) {
+  font-size: 28px;
+  background: #fff0cc;
+  border-radius: 14px;
+  padding: 9px 16px;
+  color: #a56116;
+}
+:where(.workspace) :global(.badge) {
+  display: inline-flex;
+  background: #f5eddf;
+  border-radius: 30px;
+  padding: 6px 12px;
+  font-size: 12px;
+  white-space: nowrap;
+  align-self: start;
+}
+:where(.workspace) :global(.published) {
+  background: #e4f0e6;
+  color: #376842;
+}
+:where(.workspace) :global(.lesson-card) h2 {
+  font-size: 21px;
+}
+:where(.workspace) :global(.lesson-card) p {
+  font-size: 14px;
+  color: var(--muted);
+}
+:where(.workspace) :global(.lesson-card) small {
+  font-size: 12px;
+  color: #6a625a;
+}
+:where(.workspace) :global(.class-summary) {
+  margin-top: auto;
+  padding-top: 14px;
+}
+:where(.workspace) :global(.lesson-card) footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  gap: 8px;
+}
+:where(.workspace) :global(.lesson-card) footer button {
+  padding: 6px 0;
+  border: 0;
+  font-size: 13px;
+  background: none;
+}
+:where(.workspace) :global(.text-danger) {
+  color: #a52e2e !important;
+}
+:where(.workspace) :global(.editor-toolbar) {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+:where(.workspace) :global(.editor-toolbar) > span {
+  margin-right: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+:where(.workspace) :global(.editor-toolbar) button {
+  font-size: 13px;
+}
+:where(.workspace) :global(.editor-layout) {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+:where(.workspace) :global(.lesson-outline) {
+  padding-top: 14px;
+}
+:where(.workspace) :global(.lesson-outline) > button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: left;
+  padding: 15px;
+}
+:where(.workspace) :global(.lesson-outline) > button > span {
+  border: 1px solid #d9cbbc;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+}
+:where(.workspace) :global(.lesson-outline) > button small {
+  margin-left: auto;
+}
+:where(.workspace) :global(.lesson-outline) > button:global(.active) {
+  background: #f8e6c0;
+  color: #713d12;
+}
+:where(.workspace) :global(.lesson-outline) > button:global(.active) > span {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+:where(.workspace) :global(.teacher-tip) {
+  border-top: 1px solid var(--border);
+  margin: 28px 12px 0;
+  padding-top: 24px;
+  font-size: 13px;
+}
+:where(.workspace) :global(.teacher-tip) p {
+  color: var(--muted);
+  font-size: 13px;
+}
+:where(.workspace) :global(.teacher-tip) > span {
+  font-size: 12px;
+  color: #a45832;
+}
+:where(.workspace) :global(.editor-panel) {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: 0 5px 0 #eadfd23b;
+}
+:where(.workspace) :global(.section-heading) {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+}
+:where(.workspace) :global(.section-heading) p:last-child {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+:where(.workspace) :global(.form-stack) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+:where(.workspace) label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+}
+:where(.workspace) label > span:not(:global(.class-option) span),
+:where(.workspace) legend > span {
+  color: var(--red);
+}
+:where(.workspace) input:not([type="checkbox"]):not([type="radio"]),
+:where(.workspace) textarea,
+:where(.workspace) select {
+  display: block;
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid #d9cbbc;
+  border-radius: 10px;
+  color: var(--navy);
+  background: #fffefa;
+  margin-top: 9px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+:where(.workspace) input::placeholder,
+:where(.workspace) textarea::placeholder {
+  color: #9a9690;
+}
+:where(.workspace) textarea {
+  resize: vertical;
+}
+:where(.workspace) fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+:where(.workspace) legend {
+  font-size: 14px;
+  font-weight: 600;
+}
+:where(.workspace) :global(.hint) {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 7px 0 12px;
+}
+:where(.workspace) :global(.class-options) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+:where(.workspace) :global(.class-option) {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  padding: 15px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+:where(.workspace) :global(.class-option):global(.checked) {
+  border-color: var(--coral);
+  background: #fff6f0;
+}
+:where(.workspace) :global(.class-option) input {
+  margin-top: 4px;
+  accent-color: var(--red);
+}
+:where(.workspace) :global(.class-option) span {
+  color: var(--navy) !important;
+}
+:where(.workspace) :global(.class-option) strong {
+  font-size: 12px;
+}
+:where(.workspace) :global(.class-option) small {
+  display: block;
+  font-size: 10px;
+  font-weight: normal;
+  margin-top: 4px;
+  color: var(--muted);
+}
+:where(.workspace) :global(.step-footer) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+  padding-top: 24px;
+}
+:where(.workspace) :global(.step-footer) p {
+  font-size: 11px;
+  color: var(--muted);
+}
+:where(.workspace) :global(.step-footer) button {
+  font-size: 13px;
+}
+:where(.workspace) :global(.item-card) {
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 14px;
+  background: #fffcf7;
+}
+:where(.workspace) :global(.item-card) legend {
+  padding: 0 8px;
+}
+:where(.workspace) :global(.row-actions) {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+:where(.workspace) :global(.row-actions) button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+:where(.workspace) :global(.vocab-fields) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 12px;
+}
+:where(.workspace) :global(.add-button) {
+  border: 1.5px dashed var(--coral);
+  background: #fff9f4;
+  padding: 16px;
+  color: #9b3a2d;
+}
+:where(.workspace) :global(.option-grid) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+:where(.workspace) :global(.preview-content) {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--cream);
+  border-radius: 24px;
+  padding: 40px;
+}
+:where(.workspace) :global(.close-preview) {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+:where(.workspace) :global(.preview-content) > h2 {
+  font-size: 32px;
+  padding-right: 30px;
+}
+:where(.workspace) :global(.preview-words) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+:where(.workspace) :global(.preview-words) > div {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 18px;
+  text-align: center;
+  border-radius: 14px;
+  min-width: 120px;
+}
+:where(.workspace) :global(.preview-words) strong {
+  display: block;
+  font-size: 26px;
+}
+:where(.workspace) :global(.preview-words) span {
+  font-size: 13px;
+  color: #a45832;
+}
+:where(.workspace) :global(.preview-words) p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+:where(.workspace) :global(.preview-question) {
+  padding: 18px;
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+:where(.workspace) :global(.preview-option) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+}
+:where(.workspace) :global(.preserve-lines) {
+  white-space: pre-wrap;
+}
+@media (max-width: 900px) {
+  :where(.workspace) :global(.lesson-grid) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  :where(.workspace) :global(.editor-layout) {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) :global(.lesson-outline) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0;
+  }
+  :where(.workspace) :global(.lesson-outline) > :global(.eyebrow),
+  :where(.workspace) :global(.teacher-tip) {
+    display: none;
+  }
+  :where(.workspace) :global(.lesson-outline) > button {
+    width: auto;
+    flex: 1;
+    margin: 0;
+    padding: 12px;
+  }
+  :where(.workspace) :global(.class-options) {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) :global(.heading-dragon) {
+    margin: 0;
+    width: 90px;
+    height: 106px;
+  }
+}
+@media (max-width: 600px) {
+  .workspace {
+    width: 100%;
+    padding: 20px 16px 48px;
+  }
+  :where(.workspace) :global(.page-heading) {
+    padding-top: 24px;
+  }
+  :where(.workspace) :global(.eyebrow) {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  :where(.workspace) h1 {
+    letter-spacing: -1px;
+  }
+  :where(.workspace) :global(.page-heading) p:last-child {
+    font-size: 13px;
+  }
+  :where(.workspace) :global(.heading-dragon) {
+    width: 75px;
+    height: 88px;
+  }
+  :where(.workspace) :global(.library-toolbar) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  :where(.workspace) :global(.filters) {
+    justify-content: center;
+  }
+  :where(.workspace) :global(.lesson-grid) {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) :global(.editor-panel) {
+    padding: 20px 16px;
+  }
+  :where(.workspace) :global(.editor-toolbar) > span {
+    width: 50%;
+    margin: 0;
+  }
+  :where(.workspace) :global(.editor-toolbar) button {
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+  :where(.workspace) :global(.lesson-outline) > button {
+    font-size: 11px;
+    gap: 5px;
+    padding: 10px 5px;
+  }
+  :where(.workspace) :global(.lesson-outline) > button small {
+    display: none;
+  }
+  :where(.workspace) :global(.vocab-fields),
+  :where(.workspace) :global(.option-grid) {
+    grid-template-columns: 1fr;
+  }
+  :where(.workspace) :global(.step-footer) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  :where(.workspace) :global(.step-footer) p {
+    margin: 0;
+  }
+  :where(.workspace) :global(.preview-content) {
+    padding: 28px 20px;
+  }
+  :where(.workspace) :global(.section-heading) h2 {
+    font-size: 22px;
+  }
+}
+
+:where(.workspace) :global(.display-actions) {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+:where(.workspace) :global(.display-options) {
+  display: flex;
+  gap: 18px;
+  align-items: end;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 0 22px;
+}
+:where(.workspace) :global(.display-options) label {
+  flex: 1;
+}
+:where(.workspace) :global(.expression-card) {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+:where(.workspace) :global(.expression-card) legend {
+  padding: 0 7px;
+}
+:where(.workspace) :global(.expression-card) > :global(.option-grid) {
+  margin-bottom: 16px;
+}
+:where(.workspace) :global(.lesson-card) > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  :where(.workspace) :global(.display-options) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

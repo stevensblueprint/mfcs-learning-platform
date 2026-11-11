@@ -1,0 +1,41 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin-block: 0 24px;
+  padding: max(12px, calc(20 * var(--unit, 1px)));
+  border: 2px solid var(--error-border);
+  border-radius: var(--radius-control);
+  background: white;
+}
+.icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 3px;
+  background: url("/icons/error-circle.svg") center / contain no-repeat;
+}
+.alert .title {
+  margin: 0;
+  color: var(--error-text);
+  font-size: max(16px, calc(20 * var(--unit, 1px)));
+  line-height: 1.4;
+}
+.alert .title + .title {
+  margin-top: 4px;
+}
+.alert .detail {
+  margin: 3px 0 0;
+  color: var(--text-subtle);
+  font-size: 14px;
+  line-height: 1.4;
+}
+@media (max-width: 760px) {
+  .alert {
+    border-radius: 12px;
+  }
+  .alert .detail {
+    font-size: 13px;
+  }
+}
