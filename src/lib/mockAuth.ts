@@ -12,11 +12,26 @@ export interface Session {
 
 const SESSION_KEY = "mfcs-mock-session";
 
-const DEMO_ADMIN: Session = {
-  name: "Admin",
-  email: "admin@mfcs.test",
-  role: "admin",
-};
+const DEMO_USERS: (Session & { password: string })[] = [
+  {
+    name: "Sam Student",
+    email: "student@mfcs.test",
+    password: "password123",
+    role: "student",
+  },
+  {
+    name: "Tina Teacher",
+    email: "teacher@mfcs.test",
+    password: "password123",
+    role: "teacher",
+  },
+  {
+    name: "Alex Admin",
+    email: "admin@mfcs.test",
+    password: "password123",
+    role: "admin",
+  },
+];
 
 // Lets React components re-render when the session changes in this tab.
 const listeners = new Set<() => void>();
@@ -64,10 +79,17 @@ export function parseSession(raw: string | null): Session | null {
   }
 }
 
-export function login(username: string, password: string): Session | null {
-  if (username !== "admin" || password !== "admin") return null;
+export function login(email: string, password: string): Session | null {
+  const user = DEMO_USERS.find(
+    (u) => u.email === email.trim().toLowerCase() && u.password === password,
+  );
+  if (!user) return null;
 
-  const session: Session = { ...DEMO_ADMIN };
+  const session: Session = {
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  };
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   notify();
   return session;
@@ -82,12 +104,16 @@ export function getSession(): Session | null {
   return parseSession(getSessionSnapshot());
 }
 
-// Mock recovery only: no email is sent and no password is changed.
 export function requestPasswordReset(
   identifier: string,
 ): { email: string } | null {
-  const value = identifier.trim();
-  if (value !== "admin" && value.toLowerCase() !== DEMO_ADMIN.email)
-    return null;
-  return { email: DEMO_ADMIN.email };
+  const query = identifier.trim().toLowerCase();
+  const user = DEMO_USERS.find(
+    (u) =>
+      u.email.toLowerCase() === query ||
+      u.name.toLowerCase() === query ||
+      u.email.split("@")[0].toLowerCase() === query,
+  );
+  if (!user) return null;
+  return { email: user.email };
 }

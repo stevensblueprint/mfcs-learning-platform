@@ -20,7 +20,7 @@ export function getDb(): Pool {
       connectionTimeoutMillis: 5_000,
     });
 
-    pool.on("error", (error) => {
+    pool.on("error", (error: Error) => {
       console.error("Unexpected idle database connection error:", error);
     });
 

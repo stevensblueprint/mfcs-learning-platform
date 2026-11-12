@@ -48,9 +48,21 @@ export default function Header() {
           ))}
         {session && (
           <Link
+            href="/dashboard"
+            aria-current={
+              pathname === "/dashboard"
+                ? "page"
+                : undefined
+            }
+          >
+            Dashboard
+          </Link>
+        )}
+        {session && (
+          <Link
             href="/lessons"
             aria-current={
-              pathname === "/lessons" || pathname === "/dashboard"
+              pathname === "/lessons"
                 ? "page"
                 : undefined
             }
